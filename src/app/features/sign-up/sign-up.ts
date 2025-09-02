@@ -2,7 +2,6 @@ import { Component, inject } from '@angular/core';
 import { ReactiveFormsModule, FormGroup, FormControl, AbstractControl, Validators } from '@angular/forms';
 import { AuthService } from '../../core/services/authService/auth-service';
 import { Router } from '@angular/router';
-import { log } from 'console';
 
 @Component({
   selector: 'app-sign-up',
@@ -26,49 +25,70 @@ export class SignUp {
     rePassword: new FormControl('', [Validators.required]),
     // email: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
-    // phone: new FormControl('', [Validators.required]),
-    phone: new FormControl('', [Validators.required,Validators.pattern(/^01[125][0-9]{8}$/)]),
-  })
+    phone: new FormControl('', [Validators.required]),
+    // phone: new FormControl('', [Validators.required,Validators.pattern(/^01[0125][0-9]{8}$/)]),
+    })
   // }, { validators: this.confirmPassword })
 
   confirmPassword(group: AbstractControl) {
     let password = group.get('password')?.value
     let rePassword = group.get('rePassword')?.value
-    if (password === rePassword) {
-      return null
-    } else {
-      return { mismatch: true }
+    if (!password || !rePassword) {
+      return null;
     }
+    return password === rePassword ? null : { mismatch: true };
   }
 
   submitBtn() {
     console.log(this.registerForm);
-    
 
 
-    // this.isLoading = true
-    // if (this.registerForm.valid) {
-    // this._AuthService.sendRegisterForm(this.registerForm.value).subscribe({
-    //   next: (res) => {
-    //     console.log(res);
-    //     if (res.message == 'success') {
-    //       // login
-    //       this.isLoading = false
-    //       this._Router.navigate(['/logIn'])
-    //     }
-    //   },
-    //   error: (err) => {
-    //     console.log(err);
-    //     this.errorMsg = err.error.message
-    //   },
-    // })
-    // } else {
-    //   this.registerForm.markAllAsTouched()
-    // }
+
+    this.isLoading = true
+    if (this.registerForm.errors === null) {
+      this._AuthService.sendRegisterForm(this.registerForm.value).subscribe({
+        next: (res) => {
+          console.log(res);
+          if (res.message == 'success') {
+            // login
+            this.isLoading = false
+            console.log(this.registerForm.value);
+            this._Router.navigate(['/logIn'])
+          }
+        },
+        error: (err) => {
+          console.log(err);
+          this.errorMsg = err.error.message
+        },
+      })
+
+
+
+    } else {
+      this.registerForm.markAllAsTouched()
+    }
 
 
 
     // this._Router.navigate(['/logIn'])
 
   }
+
+  constructor() {
+    this.registerForm.valueChanges.subscribe(values => {
+      console.log('Form values changed:', values);
+      console.log('Form valid:', this.registerForm.valid);
+      console.log('Form errors:', this.registerForm.errors);
+      console.log('Password errors:', this.registerForm.get('password')?.errors);
+      console.log('Email errors:', this.registerForm.get('email')?.errors);
+    });
+  }
+
+  // ngOnInit() {
+  //   this.registerForm.statusChanges.subscribe(status => {
+  //     console.log('Form status:', status);
+  //     console.log('Form valid:', this.registerForm.valid);
+  //     console.log('Form invalid:', this.registerForm.invalid);
+  //   });
+  // }
 }

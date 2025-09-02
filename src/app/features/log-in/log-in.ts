@@ -35,7 +35,7 @@ export class LogIn {
             console.log(res.token)
             //home
             this.isLoading = false
-            this._Router.navigate(['/home'])
+            this._Router.navigate(['/'])
           }
         },
         error: (err) => {
