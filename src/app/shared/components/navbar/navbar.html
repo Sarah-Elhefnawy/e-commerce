@@ -6,15 +6,19 @@
     <div class="flex basis-2/3 items-center justify-between" id="navbar-sticky">
       <div class="w-fit md:order-2 p-2 flex flex-row justify-center">
         <ul>
+          @if(isLoggedIn){
           <li>
-            <a class="text-gray-400 font-medium text-sm px-1.5 py-2 text-center">Log Out</a>
+            <a (click)="signOut()" class="text-gray-400 cursor-pointer font-medium text-sm px-1.5 py-2 text-center">Log Out</a>
           </li>
+          }
+          @if(!isLoggedIn){
           <li>
             <a routerLink="/signUp" class="text-gray-400 font-medium text-sm px-1.5 py-2 text-center">Sign Up</a>
           </li>
           <li>
             <a routerLink="/logIn" class="text-gray-400 font-medium text-sm px-1.5 py-2 text-center">Log In</a>
           </li>
+          }
         </ul>
       </div>
 
@@ -23,9 +27,11 @@
           <li>
             <a routerLink="/" class="block py-2 px-3 text-gray-400 md:p-0">Home</a>
           </li>
+          @if(isLoggedIn){
           <li>
             <a routerLink="/cart" class="block py-2 px-3 text-gray-400 md:p-0">Cart</a>
           </li>
+          }
           <li>
             <a routerLink="/products" class="block py-2 px-3 text-gray-400 md:p-0">Products</a>
           </li>

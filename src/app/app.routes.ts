@@ -1,4 +1,4 @@
-import { RouterModule, Routes } from '@angular/router';
+import { Routes } from '@angular/router';
 import { Home } from './features/home/home';
 import { Categories } from './features/categories/categories';
 import { Brands } from './features/brands/brands';
@@ -8,17 +8,19 @@ import { Products } from './features/products/products';
 import { NotFound } from './features/not-found/not-found';
 import { Cart } from './features/cart/cart';
 import { ProductDetails } from './features/product-details/product-details';
-import { NgModule } from '@angular/core';
+import { authGuard } from './core/guards/auth-guard';
+import { loggedInGuard } from './core/guards/logged-in-guard';
+import { Password } from './features/password/password';
 
 export const routes: Routes = [
     {path:'', component:Home, title:'Home'},
-    {path:'cart', component:Cart, title:'Cart'},
     {path:'products', component:Products, title:'Products'},
     {path:'product-details/:id', component:ProductDetails, title:'Product Details'},
-    {path:'cart', component:Cart, title:'Cart'},
+    {path:'cart', component:Cart, title:'Cart', canActivate:[authGuard]},
     {path:'categories', component:Categories, title:'Categories'},
     {path:'brands', component:Brands, title:'Brands'},
-    {path:'logIn', component:LogIn, title:'LogIn'},
-    {path:'signUp', component:SignUp, title:'SignUp'},
+    {path:'logIn', component:LogIn, title:'LogIn',canActivate:[loggedInGuard]},
+    {path:'signUp', component:SignUp, title:'SignUp',canActivate:[loggedInGuard]},
+    {path:'resetPassword', component:Password, title:'Forot Password',canActivate:[loggedInGuard]},
     {path:'notFound', component:NotFound, title:'Not Found'},
 ];

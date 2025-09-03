@@ -10,7 +10,6 @@ import { CategorySlider } from "../category-slider/category-slider";
   styleUrl: './categories.scss'
 })
 export class Categories {
-  // private readonly _CategoriesService = inject(ECommerceService);
   constructor(private _CategoriesService:CategoriesService){}
 
   // productSubId!:Subscription;

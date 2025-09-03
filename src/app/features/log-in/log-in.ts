@@ -1,11 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 import { LoginService } from '../../core/services/loginService/login-service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-log-in',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './log-in.html',
   styleUrl: './log-in.scss'
 })
@@ -28,11 +28,12 @@ export class LogIn {
     if (this.logInForm.valid) {
       this._LoginServcie.sendRegisterForm(this.logInForm.value).subscribe({
         next: (res) => {
-          console.log(res);
+          // console.log(res);
           if (res.message == 'success') {
             // save token in localStorage
             localStorage.setItem('token', res.token)
-            console.log(res.token)
+            // user data from token
+            this._LoginServcie.decodeUserData()
             //home
             this.isLoading = false
             this._Router.navigate(['/'])
