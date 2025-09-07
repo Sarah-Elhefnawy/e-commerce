@@ -29,7 +29,6 @@ export class LoginService {
   decodeUserData() {
     const token = localStorage.getItem('token')!
     const decoded = jwtDecode(token)
-    // console.log(decoded);
     this.userData.next(decoded)
   }
 

@@ -20,7 +20,6 @@ export class Categories {
     // this.productSubId = this._CategoriesService.getAllCategories().subscribe({
     this._CategoriesService.getAllCategories().subscribe({
       next: (res) => {
-        // console.log(res);
         this.dataList.set(res.data)
       },
       error: (err) => {

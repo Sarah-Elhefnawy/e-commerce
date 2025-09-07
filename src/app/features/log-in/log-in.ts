@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 import { LoginService } from '../../core/services/loginService/login-service';
 import { Router, RouterLink } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-log-in',
@@ -28,7 +29,6 @@ export class LogIn {
     if (this.logInForm.valid) {
       this._LoginServcie.sendRegisterForm(this.logInForm.value).subscribe({
         next: (res) => {
-          // console.log(res);
           if (res.message == 'success') {
             // save token in localStorage
             localStorage.setItem('token', res.token)
@@ -40,7 +40,6 @@ export class LogIn {
           }
         },
         error: (err) => {
-          console.log(err.error.message);
           this.errorMsg = err.error.message
         },
       })

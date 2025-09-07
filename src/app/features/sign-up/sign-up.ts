@@ -40,10 +40,6 @@ export class SignUp {
   }
 
   submitBtn() {
-    console.log(this.registerForm);
-
-
-
     this.isLoading = true
     if (this.registerForm.errors === null) {
       this._AuthService.sendRegisterForm(this.registerForm.value).subscribe({
@@ -67,28 +63,15 @@ export class SignUp {
     } else {
       this.registerForm.markAllAsTouched()
     }
-
-
-
-    // this._Router.navigate(['/logIn'])
-
   }
 
-  constructor() {
-    this.registerForm.valueChanges.subscribe(values => {
-      console.log('Form values changed:', values);
-      console.log('Form valid:', this.registerForm.valid);
-      console.log('Form errors:', this.registerForm.errors);
-      console.log('Password errors:', this.registerForm.get('password')?.errors);
-      console.log('Email errors:', this.registerForm.get('email')?.errors);
-    });
-  }
-
-  // ngOnInit() {
-  //   this.registerForm.statusChanges.subscribe(status => {
-  //     console.log('Form status:', status);
+  // constructor() {
+  //   this.registerForm.valueChanges.subscribe(values => {
+  //     console.log('Form values changed:', values);
   //     console.log('Form valid:', this.registerForm.valid);
-  //     console.log('Form invalid:', this.registerForm.invalid);
+  //     console.log('Form errors:', this.registerForm.errors);
+  //     console.log('Password errors:', this.registerForm.get('password')?.errors);
+  //     console.log('Email errors:', this.registerForm.get('email')?.errors);
   //   });
   // }
 }

@@ -20,7 +20,6 @@ export class Brands {
     // this.productSubId = this._BrandsService.getAllCategories().subscribe({
     this._BrandsService.getAllBrands().subscribe({
       next: (res) => {
-        console.log(res.data);
         this.dataList.set(res.data)
       },
       error: (err) => {

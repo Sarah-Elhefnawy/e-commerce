@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { FlowbiteService } from './../../../core/services/flowbiteService/flowbite-service';
 import { LoginService } from './../../../core/services/loginService/login-service';
+import { CartService } from '../../../core/services/cart/cart-service';
+import { FlowbiteService } from './../../../core/services/FlowBite/flowbite-service';
 import { initFlowbite } from 'flowbite';
 
 @Component({
@@ -11,11 +12,14 @@ import { initFlowbite } from 'flowbite';
   styleUrl: './navbar.scss'
 })
 export class Navbar {
-  constructor(private _FlowbiteService: FlowbiteService, private _LoginService: LoginService) { }
+  private _FlowbiteService = inject(FlowbiteService)
+  private _LoginService = inject(LoginService)
+  private _CartService = inject(CartService)
 
   isLoggedIn!: boolean
+  cartNumber: number = 0
 
-  ngOnInit(): void {
+  LogIn() {
     this._LoginService.userData.subscribe({
       next: res => {
         if (res !== null) {
@@ -25,13 +29,26 @@ export class Navbar {
         }
       }
     })
+  }
+
+  CartNums() {
+    this._CartService.cartNum.subscribe({
+      next: res => {
+        this.cartNumber = res
+      }
+    })
+  }
+
+  ngOnInit(): void {
+    this.LogIn()
+    this.CartNums()
 
     this._FlowbiteService.loadFlowbite((flowbite) => {
       initFlowbite()
     })
   }
 
-  signOut(){
+  signOut() {
     this._LoginService.logOut()
   }
 }

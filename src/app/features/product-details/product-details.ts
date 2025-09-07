@@ -2,6 +2,8 @@ import { Component, inject, signal, WritableSignal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ECommerceService } from '../../core/services/e-commerce/e-commerce-service';
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
+import { ToastrService } from 'ngx-toastr';
+import { CartService } from '../../core/services/cart/cart-service';
 
 @Component({
   selector: 'app-product-details',
@@ -15,12 +17,13 @@ export class ProductDetails {
   productDetails: WritableSignal<any> = signal({});
   private activated = inject(ActivatedRoute);
   private _ProductService = inject(ECommerceService);
+  private _CartService = inject(CartService)
+  private _ToastrService = inject(ToastrService)
 
   getId() {
     this.activated.paramMap.subscribe({
       next: (res) => {
         this.productId = res.get('id')
-        // console.log(res.get('id'))
       }
     })
   }
@@ -28,8 +31,19 @@ export class ProductDetails {
   getProductDetails() {
     this._ProductService.getOneProduct(this.productId).subscribe({
       next: (res) => {
-        console.log(res.data)
         this.productDetails.set(res.data)
+      },
+    })
+  }
+
+
+  addProduct(id: string | null) {
+    this._CartService.addProductToCart(this.productId).subscribe({
+      next: (res) => {
+        this._ToastrService.success(res.message, 'success')
+        this._CartService.cartNum.next(res.numOfCartItems)
+      }, error: (err) => {
+        this._ToastrService.error(err.error.message, 'Error')
       },
     })
   }

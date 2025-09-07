@@ -1,17 +1,17 @@
 import { Component, signal, WritableSignal } from '@angular/core';
-import { inject } from '@angular/core/primitives/di';
 import { Subscription } from 'rxjs';
 import { ECommerceService } from '../../core/services/e-commerce/e-commerce-service';
 import { ProductCard } from "../../shared/components/product-card/product-card";
 import { IProduct } from '../../core/interfaces/iproduct';
 import { MainSlider } from "../main-slider/main-slider";
 import { CarouselModule } from 'ngx-owl-carousel-o';
-import { CategorySlider } from "../category-slider/category-slider";
 import { Categories } from "../categories/categories";
+import { FormsModule } from '@angular/forms';
+import { SearchPipe } from '../../shared/pipes/search/search-pipe';
 
 @Component({
   selector: 'app-home',
-  imports: [ProductCard, CarouselModule, CategorySlider, MainSlider, Categories],
+  imports: [ProductCard, CarouselModule, MainSlider, Categories, FormsModule, SearchPipe],
   templateUrl: './home.html',
   styleUrl: './home.scss'
 })
@@ -20,6 +20,7 @@ export class Home {
   constructor(private _ProductsService:ECommerceService){}
 
   // productSubId!:Subscription;
+  inputText:string = ''
 
   dataList:WritableSignal<IProduct[]> = signal([])
 
@@ -27,7 +28,6 @@ export class Home {
     // this.productSubId = this._ProductsService.getProducts().subscribe({
     this._ProductsService.getProducts().subscribe({
       next: (res) => {
-        // console.log(res.data);
         this.dataList.set(res.data)
       },
       error: (err) => {

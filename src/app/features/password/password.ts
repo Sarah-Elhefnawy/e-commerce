@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { ForgetPassword } from '../../core/services/forgetPassword/forget-password';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-password',
@@ -12,6 +13,7 @@ import { Router } from '@angular/router';
 export class Password {
   private readonly _ForgetPassword = inject(ForgetPassword)
   private readonly _Router = inject(Router)
+  private readonly _ToastrService = inject(ToastrService)
 
   isLoading!: boolean
   errorMsg: string = ''
@@ -27,6 +29,7 @@ export class Password {
       next: res => {
         this.isLoading = false
         if (res.statusMsg == 'success') {
+          this._ToastrService.success(res.message,res.statusMsg)
           this.step = 2
         }
       },
@@ -47,6 +50,7 @@ export class Password {
       next: res => {
         this.isLoading = false
         if (res.status == 'Success') {
+          this._ToastrService.success(res.status)
           this.step = 3
         }
       },

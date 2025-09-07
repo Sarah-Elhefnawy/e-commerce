@@ -11,16 +11,20 @@ import { ProductDetails } from './features/product-details/product-details';
 import { authGuard } from './core/guards/auth-guard';
 import { loggedInGuard } from './core/guards/logged-in-guard';
 import { Password } from './features/password/password';
+import { CheckOut } from './features/check-out/check-out';
+import { AllOrders } from './features/all-orders/all-orders';
 
 export const routes: Routes = [
     {path:'', component:Home, title:'Home'},
     {path:'products', component:Products, title:'Products'},
     {path:'product-details/:id', component:ProductDetails, title:'Product Details'},
     {path:'cart', component:Cart, title:'Cart', canActivate:[authGuard]},
+    {path:'allorders', component:AllOrders, title:'All Orders', canActivate:[authGuard]},
+    {path:'checkOut/:id', component:CheckOut, title:'Payment',canActivate:[authGuard]},
     {path:'categories', component:Categories, title:'Categories'},
     {path:'brands', component:Brands, title:'Brands'},
     {path:'logIn', component:LogIn, title:'LogIn',canActivate:[loggedInGuard]},
     {path:'signUp', component:SignUp, title:'SignUp',canActivate:[loggedInGuard]},
     {path:'resetPassword', component:Password, title:'Forot Password',canActivate:[loggedInGuard]},
-    {path:'notFound', component:NotFound, title:'Not Found'},
+    {path:'**', component:NotFound, title:'Not Found'},
 ];
