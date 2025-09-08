@@ -1,0 +1,58 @@
+@for (order of myorders; track $index) {
+<div class="order-container mb-8">
+    <h1
+        class="mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl lg:text-6xl text-center text-green-800">
+        Order NO. {{$index + 1}}
+    </h1>
+
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+        <thead class="text-xs w-full text-gray-700 uppercase">
+            <tr>
+                <th scope="col" class="px-1 text-center py-3 bg-gray-50">Product name</th>
+                <th scope="col" class="px-3 text-center py-3">Price</th>
+                <th scope="col" class="px-3 text-center py-3">Count</th>
+                <th scope="col" class="px-3 text-center py-3 bg-gray-50">Image</th>
+                <th scope="col" class="px-3 text-center py-3">Category</th>
+                <th scope="col" class="px-3 text-center py-3 bg-gray-50">Brand</th>
+                <th scope="col" class="px-3 text-center py-3">Rating</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (item of order.cartItems; track $index) {
+            <tr class="border-b w-full border-gray-200">
+                <td class="px-1 w-[50%] py-4 font-medium text-gray-900 bg-gray-50">
+                    <p class="whitespace-nowrap text-center">{{item.product.title}}</p>
+                </td>
+                <td class="px-3 py-4">
+                    <p class="text-center">{{item.price | currency}}</p>
+                </td>
+                <td class="px-3 py-4">
+                    <p class="text-center">{{item.count}}</p>
+                </td>
+                <td class="px-3 py-4 bg-gray-50">
+                    <img class="w-16 h-16 mx-auto object-contain" [src]="item.product.imageCover"
+                        [alt]="item.product.title">
+                </td>
+                <td class="px-3 py-4">
+                    <p class="text-center">{{item.product.category.name}}</p>
+                </td>
+                <td class="px-3 py-4 bg-gray-50">
+                    <p class="text-center">{{item.product.brand.name}}</p>
+                </td>
+                <td class="px-3 py-4">
+                    <p class="text-center">{{item.product.ratingsAverage}} ({{item.product.ratingsQuantity}})</p>
+                </td>
+            </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr class="font-semibold text-gray-900">
+                <th scope="row" class="px-3 py-3 text-base text-center">Total</th>
+                <td class="px-3 text-center py-3 font-bold" colspan="6">{{order.totalOrderPrice | currency}}</td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <hr class="w-48 h-1 mx-auto my-4 bg-gray-700 border-0 rounded-sm md:my-6">
+</div>
+}

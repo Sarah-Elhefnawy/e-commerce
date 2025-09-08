@@ -1,8 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { Inject, inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../../../environments/environment.development';
 import { isPlatformBrowser } from '@angular/common';
+import { jwtDecode } from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +14,22 @@ export class CheckOutService {
 
   private tokenHttp: string | null = null;
 
-  constructor() {
+  constructor(@Inject(PLATFORM_ID) private id: Object) {
     this.initializeToken();
+
+    if (isPlatformBrowser(id)) {
+      if (localStorage.getItem('token')) {
+        this.decodeUserData()
+      }
+    }
+  }
+  
+  userData!: any
+
+  decodeUserData() {
+    const token = localStorage.getItem('token')!
+    const decoded = jwtDecode(token)
+    this.userData = decoded
   }
 
   initializeToken(): void {

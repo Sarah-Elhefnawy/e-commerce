@@ -2,6 +2,7 @@ import { Component, signal, WritableSignal } from '@angular/core';
 import { CategoriesService } from '../../core/services/categories/categories-service';
 import { ICategory } from '../../core/interfaces/icategory';
 import { CategorySlider } from "../category-slider/category-slider";
+import { CheckOutService } from './../../core/services/checkOut/check-out-service';
 
 @Component({
   selector: 'app-categories',
@@ -10,13 +11,13 @@ import { CategorySlider } from "../category-slider/category-slider";
   styleUrl: './categories.scss'
 })
 export class Categories {
-  constructor(private _CategoriesService:CategoriesService){}
+  constructor(private _CategoriesService: CategoriesService, private _CheckOutService: CheckOutService) { }
 
   // productSubId!:Subscription;
 
-  dataList:WritableSignal<any[]> = signal([])
+  dataList: WritableSignal<any[]> = signal([])
 
-  getAllCategories():void{
+  getAllCategories(): void {
     // this.productSubId = this._CategoriesService.getAllCategories().subscribe({
     this._CategoriesService.getAllCategories().subscribe({
       next: (res) => {
@@ -30,9 +31,7 @@ export class Categories {
   }
 
   ngOnInit(): void {
-    
     this.getAllCategories()
-    
   }
 
   // ngOnDestroy():void{

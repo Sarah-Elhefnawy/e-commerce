@@ -6,12 +6,11 @@ import { IProduct } from '../../core/interfaces/iproduct';
 import { MainSlider } from "../main-slider/main-slider";
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { Categories } from "../categories/categories";
-import { FormsModule } from '@angular/forms';
-import { SearchPipe } from '../../shared/pipes/search/search-pipe';
+import { Products } from "../products/products";
 
 @Component({
   selector: 'app-home',
-  imports: [ProductCard, CarouselModule, MainSlider, Categories, FormsModule, SearchPipe],
+  imports: [Categories, MainSlider, Products, CarouselModule],
   templateUrl: './home.html',
   styleUrl: './home.scss'
 })

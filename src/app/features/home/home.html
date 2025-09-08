@@ -11,15 +11,5 @@
     </div>
 
 
-    <div class="my-5 w-[50%] mx-auto">
-        <input [(ngModel)]="inputText" class="w-full border border-green-500 p-2 rounded-xl" type="text"
-            placeholder="Search by name...">
-    </div>
-    <div class="grid grid-cols-12 mt-2 gap-4 p-4">
-        @for(data of dataList() | search: inputText ;track data._id){
-        <div class="col-span-3">
-            <app-product-card [cardDetails]="data" />
-        </div>
-        }
-    </div>
+    <app-products />
 </section>
