@@ -15,12 +15,14 @@ import { CheckOut } from './features/check-out/check-out';
 import { AllOrders } from './features/all-orders/all-orders';
 import { OrderChild } from './features/order-child/order-child';
 import { OrderUserChild } from './features/order-user-child/order-user-child';
+import { WishList } from './features/wish-list/wish-list';
 
 export const routes: Routes = [
     { path: '', component: Home, title: 'Home' },
     { path: 'products', component: Products, title: 'Products' },
     { path: 'product-details/:id', component: ProductDetails, title: 'Product Details' },
     { path: 'cart', component: Cart, title: 'Cart', canActivate: [authGuard] },
+    { path: 'wishList', component: WishList, title: 'Wish List', canActivate: [authGuard] },
     {
         path: 'allorders', component: AllOrders, canActivate: [authGuard], title: 'All Orders', children: [
             { path: '', redirectTo: 'userOrder', pathMatch: 'full' },

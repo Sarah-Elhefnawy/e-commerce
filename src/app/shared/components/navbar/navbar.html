@@ -81,33 +81,48 @@
         class="flex flex-col items-center p-4 md:p-0 mt-4 font-medium rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0">
         <li>
           <a routerLink="/"
-            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Home</a>
+            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-green-700 md:p-0">Home</a>
         </li>
         <li>
           <a routerLink="/products"
-            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Products</a>
+            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-green-700 md:p-0">Products</a>
         </li>
         <li>
           <a routerLink="/categories"
-            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Categories</a>
+            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-green-700 md:p-0">Categories</a>
         </li>
         <li>
           <a routerLink="/brands"
-            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Brands</a>
+            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-green-700 md:p-0">Brands</a>
         </li>
 
         <!-- Cart icon (only when logged in) -->
         @if(isLoggedIn){
         <li class="flex items-center">
           <a routerLink="/cart"
-            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">
+            class="block py-2 px-3 text-gray-900 cursor-pointer rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-green-700 md:p-0">
             <button type="button"
-              class="relative inline-flex items-center p-3 text-sm font-medium text-center text-white bg-green-700 rounded-lg hover:bg-green-800">
+              class="relative inline-flex items-center cursor-pointer p-3 text-sm font-medium text-center text-white bg-green-700 rounded-lg hover:bg-green-800">
               <i class="fa-solid fa-cart-shopping"></i>
               <span class="sr-only">Cart</span>
               <div
                 class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -end-2">
                 {{cartNumber}}
+              </div>
+            </button>
+          </a>
+        </li>
+
+        <li class="flex items-center">
+          <a routerLink="/wishList"
+            class="block py-2 px-3 text-gray-900 cursor-pointer rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-green-700 md:p-0">
+            <button type="button"
+              class="relative inline-flex items-center cursor-pointer p-3 text-sm font-medium text-center text-white bg-green-700 rounded-lg hover:bg-green-800">
+              <i class="fa-solid fa-heart"></i>
+              <span class="sr-only">WishList</span>
+              <div
+                class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -end-2">
+                {{wishListNumber}}
               </div>
             </button>
           </a>

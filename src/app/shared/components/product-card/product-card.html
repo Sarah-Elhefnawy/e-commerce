@@ -37,11 +37,16 @@
                 class="bg-green-00 text-green-800 text-xs font-semibold md:px-2.5 py-0.5 rounded-sm md:ms-3 ms-1">{{cardDetails.ratingsAverage}}</span>
         </div>
 
-        <div class="flex flex-col md:flex-row items-center justify-between">
-            <span class="md:text-lg text-md font-bold text-gray-900">{{cardDetails.price | currency:'EGP'}}</span>
-            <a (click)="addProduct(cardDetails._id); $event.stopPropagation(); $event.preventDefault()"
-                class="text-white cursor-pointer bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 md:font-medium font:small rounded-lg text-sm px-2 py-1 md:px-5 md:py-2.5 text-center">Add
-                to cart</a>
+        <div class="flex items-center space-x-3">
+            <button (click)="addProduct(cardDetails._id); $event.stopPropagation(); $event.preventDefault()"
+                class="flex cursor-pointer items-center justify-center flex-1 text-grey-600 hover:text-grey-800 md:font-medium font-small py-2.5 md:px-4 px-2 rounded-lg hover:bg-gray-200">
+                <i class="fas fa-shopping-cart mr-2"></i>
+                Add to Cart
+            </button>
+            <button (click)="addProductToWishList(cardDetails._id); $event.stopPropagation(); $event.preventDefault()"
+                class="w-12 h-12 cursor-pointer flex items-center justify-center bg-gray-100 hover:bg-gray-200 rounded-lg">
+                <i class="fa-solid fa-heart text-gray-600"></i>
+            </button>
         </div>
     </div>
 

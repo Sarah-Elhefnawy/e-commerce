@@ -18,10 +18,7 @@ export class AllOrders {
     this._CheckOutService.getUserOrders().subscribe({
       next: (res) => {
         this.myorders = res
-      },
-      error: (err) => {
-        console.log(err);
-      },
+      }
     })
   }
 

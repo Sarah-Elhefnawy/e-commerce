@@ -27,13 +27,9 @@
             <label for="floating_password"
                 class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Password</label>
         </div>
-        @if(registerForm.get('password')?.errors && registerForm.get('password')?.touched){
-        @if(registerForm.get('password')?.getError('required')){
-        <p class="text-red-700">password is required</p>
-        }
-        @if(registerForm.get('password')?.getError('pattern')){
-        <p class="text-red-700">Enter valid password</p>
-        }
+        @if(registerForm.getError('mismatch') && (registerForm.get('rePassword')?.touched ||
+        registerForm.get('password')?.touched)){
+        <p class="text-red-700">Passwords do not match</p>
         }
 
 
@@ -45,9 +41,9 @@
                 class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Confirm
                 password</label>
         </div>
-        <!-- @if(registerForm.getError('mismatch') && registerForm.get('password')?.touched){
+        @if(registerForm.getError('mismatch') && registerForm.get('password')?.touched){
         <p class="text-red-700">confirm password is not valid</p>
-        } -->
+        }
 
 
         <div class="grid md:grid-cols-2 md:gap-6">

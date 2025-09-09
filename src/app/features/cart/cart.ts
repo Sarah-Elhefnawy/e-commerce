@@ -4,6 +4,7 @@ import { ICartProduct } from '../../core/interfaces/icart-product';
 import { CurrencyPipe } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
 import { RouterLink } from '@angular/router';
+import { WishListService } from '../../core/services/wishlist/wish-list-service';
 
 @Component({
   selector: 'app-cart',
@@ -13,10 +14,11 @@ import { RouterLink } from '@angular/router';
 })
 export class Cart {
   private _CartService = inject(CartService)
+  private _WishListService = inject(WishListService)
   private _ToastrService = inject(ToastrService)
 
   cartId!: string
-  productList!: ICartProduct[]
+  productList: ICartProduct[] = []
   totalPrice: number = 0
 
   getCart() {
@@ -30,14 +32,20 @@ export class Cart {
     })
   }
 
+  addProductToWishList(id: string | null) {
+    this._WishListService.addProductToWishList(id).subscribe({
+      next: (res) => {
+        this._ToastrService.success(res.message, 'success')
+        this._WishListService.wishListNum.next(res.count)
+      }
+    })
+  }
+
   removeItem(id: string) {
     this._CartService.deleteProductCart(id).subscribe({
       next: (res) => {
         this._ToastrService.success('Product is deleted')
         this.getCart()
-      },
-      error: err => {
-        console.log(err);
       }
     })
   }
@@ -47,9 +55,6 @@ export class Cart {
       next: (res) => {
         this._ToastrService.success('Product is updated')
         this.getCart()
-      },
-      error: err => {
-        console.log(err);
       }
     })
   }
@@ -59,14 +64,13 @@ export class Cart {
       next: (res) => {
         this._ToastrService.success('Cart is emptied')
         this.getCart()
-      },
-      error: err => {
-        console.log(err);
       }
     })
   }
 
   ngOnInit(): void {
     this.getCart()
+    console.log(this.productList);
+    
   }
 }

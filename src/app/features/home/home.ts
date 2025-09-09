@@ -28,11 +28,7 @@ export class Home {
     this._ProductsService.getProducts().subscribe({
       next: (res) => {
         this.dataList.set(res.data)
-      },
-      error: (err) => {
-        console.log(err);
-
-      },
+      }
     })
   }
 

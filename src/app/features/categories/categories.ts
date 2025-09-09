@@ -22,11 +22,7 @@ export class Categories {
     this._CategoriesService.getAllCategories().subscribe({
       next: (res) => {
         this.dataList.set(res.data)
-      },
-      error: (err) => {
-        console.log(err);
-
-      },
+      }
     })
   }
 

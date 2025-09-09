@@ -4,10 +4,12 @@ import { ECommerceService } from '../../core/services/e-commerce/e-commerce-serv
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 import { ToastrService } from 'ngx-toastr';
 import { CartService } from '../../core/services/cart/cart-service';
+import { WishListService } from '../../core/services/wishlist/wish-list-service';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-product-details',
-  imports: [CarouselModule],
+  imports: [CarouselModule, CurrencyPipe],
   templateUrl: './product-details.html',
   styleUrl: './product-details.scss'
 })
@@ -18,6 +20,7 @@ export class ProductDetails {
   private activated = inject(ActivatedRoute);
   private _ProductService = inject(ECommerceService);
   private _CartService = inject(CartService)
+  private _WishListService = inject(WishListService)
   private _ToastrService = inject(ToastrService)
 
   getId() {
@@ -36,15 +39,21 @@ export class ProductDetails {
     })
   }
 
-
   addProduct(id: string | null) {
     this._CartService.addProductToCart(this.productId).subscribe({
       next: (res) => {
         this._ToastrService.success(res.message, 'success')
         this._CartService.cartNum.next(res.numOfCartItems)
-      }, error: (err) => {
-        this._ToastrService.error(err.error.message, 'Error')
-      },
+      }
+    })
+  }
+
+  addProductToWishList(id: string | null) {
+    this._WishListService.addProductToWishList(this.productId).subscribe({
+      next: (res) => {
+        this._ToastrService.success(res.message, 'success')
+        this._WishListService.wishListNum.next(res.count)
+      }
     })
   }
 

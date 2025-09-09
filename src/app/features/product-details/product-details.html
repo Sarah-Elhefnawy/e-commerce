@@ -1,62 +1,48 @@
-<div class="grid sm:grid-cols-12 py-10 w-[90%] mx-auto">
-    <div class="col-span-4">
-        <!-- <img [src]="productDetails()?.imageCover" class="w-full" alt=""> -->
+<div class="max-w-6xl mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-12 gap-8">
+    <div class="md:col-span-4">
+        <owl-carousel-o [options]="customOptions">
 
-        <div>
-            <owl-carousel-o [options]="customOptions">
+            @for (slide of productDetails().images; track $index) {
+            <ng-template carouselSlide>
+                <img [src]="slide">
+            </ng-template>
+            }
 
-                @for (slide of productDetails().images; track $index) {
-                <ng-template carouselSlide>
-                    <img [src]="slide">
-                </ng-template>
-                }
-
-            </owl-carousel-o>
-        </div>
-
+        </owl-carousel-o>
     </div>
-    <div class="col-span-8 flex flex-col justify-between px-10 w-full">
+
+    <div class="md:col-span-8 flex flex-col justify-between space-y-6 bg-white p-6 rounded-lg shadow-lg">
+        <h1 class="text-2xl md:text-3xl font-bold mb-4">{{productDetails()?.title}}</h1>
+        <p class="text-gray-700 mb-6 leading-relaxed">{{productDetails()?.description}}</p>
+
         <div>
-            <h1>{{productDetails()?.title}}</h1>
-            <h2>{{productDetails()?.description}}</h2>
-        </div>
-        <div>
-            <h3>{{productDetails()?.category?.name}}</h3>
-            <div class="flex items-center mt-2.5 mb-5">
-                <div class="flex items-center rtl:space-x-reverse">
-                    <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                        fill="currentColor" viewBox="0 0 22 20">
-                        <path
-                            d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                    </svg>
-                    <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                        fill="currentColor" viewBox="0 0 22 20">
-                        <path
-                            d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                    </svg>
-                    <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                        fill="currentColor" viewBox="0 0 22 20">
-                        <path
-                            d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                    </svg>
-                    <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                        fill="currentColor" viewBox="0 0 22 20">
-                        <path
-                            d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                    </svg>
-                    <svg class="w-4 h-4 text-gray-200 dark:text-gray-600" aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                        <path
-                            d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                    </svg>
-                </div>
-                <span
-                    class="bg-blue-00 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-sm ms-3">{{productDetails()?.ratingsQuantity}}</span>
-                <span class="text-lg font-bold text-gray-900">{{productDetails()?.price}}</span>
+            <h3 class="text-lg font-semibold mb-2">Product Details</h3>
+            <div class="flex flex-wrap flex-col mb-4">
+                <span class="mb-3">
+                    <i class="fas fa-star"></i> Ratings: {{productDetails()?.ratingsQuantity}}
+                </span>
+                <span class="mb-3">
+                    <i class="fas fa-tag"></i> Brand: {{productDetails()?.brand?.name}}
+                </span>
+                <span class="mb-3">
+                    <i class="fas fa-layer-group"></i> Category: {{productDetails()?.category?.name}}
+                </span>
             </div>
         </div>
-        <a (click)="addProduct(productId)"
-            class="text-white cursor-pointer bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm py-2.5 text-center">Add
-            to cart</a>
+
+        <div class="flex items-center justify-between mt-6">
+            <span class="text-3xl ms-auto font-bold text-gray-900">{{productDetails()?.price | currency:'USD'}}</span>
+        </div>
+
+        <div class="flex space-x-4">
+            <button (click)="addProduct(productId)"
+                class="flex-1 bg-green-600 hover:bg-green-700 text-white cursor-pointer font-medium py-3 px-6 rounded-lg transition duration-300 text-center">
+                Add to Cart
+            </button>
+            <button (click)="addProductToWishList(productId)"
+                class="flex items-center justify-center bg-red-600 hover:bg-red-700 text-white cursor-pointer font-medium py-3 px-4 rounded-lg transition duration-300">
+                <i class="fa-solid fa-heart mr-2"></i> Wish List
+            </button>
+        </div>
     </div>
 </div>

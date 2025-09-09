@@ -18,10 +18,7 @@ export class OrderChild {
     this._OrderService.getUserOrders().subscribe({
       next: (res) => {
         this.myorders = res
-      },
-      error: (err) => {
-        console.log(err);
-      },
+      }
     })
   }
 

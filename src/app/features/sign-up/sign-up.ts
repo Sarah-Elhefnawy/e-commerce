@@ -17,18 +17,12 @@ export class SignUp {
   errorMsg: string = '';
 
   registerForm = new FormGroup({
-    // name: new FormControl('', [Validators.required]),
     name: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(20)]),
-    // password: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required, Validators.pattern(/^\w{6,}$/)]),
-    // rePassword: new FormControl('', [Validators.required]),
-    rePassword: new FormControl('', [Validators.required]),
-    // email: new FormControl('', [Validators.required]),
+    rePassword: new FormControl('', [Validators.required, Validators.pattern(/^\w{6,}$/)]),
     email: new FormControl('', [Validators.required, Validators.email]),
     phone: new FormControl('', [Validators.required]),
-    // phone: new FormControl('', [Validators.required,Validators.pattern(/^01[0125][0-9]{8}$/)]),
-    })
-  // }, { validators: this.confirmPassword })
+  }, { validators: this.confirmPassword })
 
   confirmPassword(group: AbstractControl) {
     let password = group.get('password')?.value
@@ -41,37 +35,35 @@ export class SignUp {
 
   submitBtn() {
     this.isLoading = true
-    if (this.registerForm.errors === null) {
+    if (this.registerForm.valid) {
       this._AuthService.sendRegisterForm(this.registerForm.value).subscribe({
         next: (res) => {
           console.log(res);
           if (res.message == 'success') {
             // login
             this.isLoading = false
-            console.log(this.registerForm.value);
+            // console.log(this.registerForm.value);
             this._Router.navigate(['/logIn'])
           }
         },
         error: (err) => {
-          console.log(err);
           this.errorMsg = err.error.message
         },
       })
 
-
-
     } else {
       this.registerForm.markAllAsTouched()
+      this.isLoading = false
     }
   }
 
-  // constructor() {
-  //   this.registerForm.valueChanges.subscribe(values => {
-  //     console.log('Form values changed:', values);
-  //     console.log('Form valid:', this.registerForm.valid);
-  //     console.log('Form errors:', this.registerForm.errors);
-  //     console.log('Password errors:', this.registerForm.get('password')?.errors);
-  //     console.log('Email errors:', this.registerForm.get('email')?.errors);
-  //   });
-  // }
+  constructor() {
+    this.registerForm.valueChanges.subscribe(values => {
+      console.log('Form values changed:', values);
+      console.log('Form valid:', this.registerForm.valid);
+      console.log('Form errors:', this.registerForm.errors);
+      console.log('Password errors:', this.registerForm.get('password')?.errors);
+      console.log('Email errors:', this.registerForm.get('email')?.errors);
+    });
+  }
 }

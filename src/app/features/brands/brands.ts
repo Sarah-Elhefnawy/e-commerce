@@ -21,11 +21,7 @@ export class Brands {
     this._BrandsService.getAllBrands().subscribe({
       next: (res) => {
         this.dataList.set(res.data)
-      },
-      error: (err) => {
-        console.log(err);
-
-      },
+      }
     })
   }
 
