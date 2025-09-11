@@ -9,6 +9,8 @@ import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/
 import { setTokenInterceptor } from './core/interceptors/setToken/set-token-interceptor';
 import { errMsgInterceptor } from './core/interceptors/messageErr/err-msg-interceptor';
 import { loadingInterceptor } from './core/interceptors/globalSpinner/loading-interceptor';
+import {provideTranslateService} from "@ngx-translate/core";
+import {provideTranslateHttpLoader} from "@ngx-translate/http-loader";
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -18,6 +20,14 @@ export const appConfig: ApplicationConfig = {
     provideAnimations(),
     NgxSpinnerModule,
     provideToastr(),
-    provideHttpClient(withFetch(),withInterceptors([setTokenInterceptor,errMsgInterceptor,loadingInterceptor]))
+    provideHttpClient(withFetch(),withInterceptors([setTokenInterceptor,errMsgInterceptor,loadingInterceptor])),
+    provideTranslateService({
+      lang: 'en',
+      fallbackLang: 'en',
+      loader: provideTranslateHttpLoader({
+        prefix: '/i18n/',
+        suffix: '.json'
+      })
+    })
   ]
 };

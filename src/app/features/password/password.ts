@@ -3,10 +3,12 @@ import { ForgetPassword } from '../../core/services/forgetPassword/forget-passwo
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { TranslateModule, TranslatePipe } from '@ngx-translate/core';
+import { MyTranslateService } from '../../core/services/translateService/my-translate-service';
 
 @Component({
   selector: 'app-password',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, TranslateModule, TranslatePipe],
   templateUrl: './password.html',
   styleUrl: './password.scss'
 })
@@ -14,6 +16,7 @@ export class Password {
   private readonly _ForgetPassword = inject(ForgetPassword)
   private readonly _Router = inject(Router)
   private readonly _ToastrService = inject(ToastrService)
+  public _MyTranslateService = inject(MyTranslateService)
 
   isLoading!: boolean
   errorMsg: string = ''
@@ -29,7 +32,7 @@ export class Password {
       next: res => {
         this.isLoading = false
         if (res.statusMsg == 'success') {
-          this._ToastrService.success(res.message,res.statusMsg)
+          this._ToastrService.success(res.message, res.statusMsg)
           this.step = 2
         }
       },

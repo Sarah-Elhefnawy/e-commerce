@@ -1,6 +1,6 @@
 <section class="w-[90%] mx-auto">
     <div class="grid grid-cols-12 my-4 gap-2">
-        @for(data of dataList(); track data._id){
+        @for(data of dataList(); track $index){
         <div class="col-span-6">
             <a
                 class="flex w-full h-full flex-col items-center bg-white rounded-lg shadow-sm md:flex-row md:max-w-xl hover:bg-gray-100">
@@ -8,8 +8,6 @@
                     [src]="data.image" alt="">
                 <div class="flex flex-col justify-between p-3 leading-normal">
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">{{data.name}}</h5>
-                    <p class="mb-2 tracking-tight text-gray-600">Created At: {{data.createdAt}}</p>
-                    <p class="mb-2 tracking-tight text-gray-600">Updated At: {{data.updatedAt}}</p>
                 </div>
             </a>
         </div>

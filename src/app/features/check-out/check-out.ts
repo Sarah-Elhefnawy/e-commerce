@@ -2,16 +2,19 @@ import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CheckOutService } from '../../core/services/checkOut/check-out-service';
 import { ActivatedRoute } from '@angular/router';
+import { TranslateModule, TranslatePipe } from '@ngx-translate/core';
+import { MyTranslateService } from '../../core/services/translateService/my-translate-service';
 
 @Component({
   selector: 'app-check-out',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, TranslateModule],
   templateUrl: './check-out.html',
   styleUrl: './check-out.scss'
 })
 export class CheckOut {
   private readonly _CheckOutService = inject(CheckOutService)
   private readonly _ActivatedRoute = inject(ActivatedRoute) // to get id from url
+  public _MyTranslateService = inject(MyTranslateService)
 
   isLoading!: boolean;
   cartId!: string | null;

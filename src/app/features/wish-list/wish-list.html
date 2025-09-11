@@ -6,34 +6,34 @@
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                     <tr>
                         <th scope="col" class="px-16 py-3">
-                            <span class="sr-only">Image</span>
+                            <span class="sr-only">{{'wishList.Image' | translate}}</span>
                         </th>
                         <!-- <th scope="col" class="px-16 py-3">
                                 <span class="sr-only">Imagesss</span>
                             </th> -->
                         <th scope="col" class="px-6 py-3">
-                            Product
+                            {{'wishList.Product' | translate}}
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Brad
+                            {{'wishList.Brand' | translate}}
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Category
+                            {{'wishList.Category' | translate}}
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Description
+                            {{'wishList.Description' | translate}}
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Qty
+                            {{'wishList.Qty' | translate}}
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Price
+                            {{'wishList.Price' | translate}}
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Rating
+                            {{'wishList.Rating' | translate}}
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Action
+                            {{'wishList.Action' | translate}}
                         </th>
                     </tr>
                 </thead>
@@ -65,7 +65,7 @@
                         <td class="px-6 py-4 font-semibold text-gray-900">{{item.ratingsAverage}}</td>
                         <td class="px-6 py-4">
                             <a (click)="removeItem(item._id)"
-                                class="cursor-pointer font-medium text-red-600 hover:underline">Remove</a>
+                                class="cursor-pointer font-medium text-red-600 hover:underline">{{'wishList.Remove' | translate}}</a>
                         </td>
                     </tr>
                     }

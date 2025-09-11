@@ -21,6 +21,7 @@ customOptions: OwlOptions = {
         items: 1
       }
     },
-    nav: true
+    nav: true,
+    rtl: true
   }
 }

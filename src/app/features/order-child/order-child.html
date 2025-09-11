@@ -2,19 +2,19 @@
 <div class="order-container mb-8">
     <h1
         class="mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl lg:text-6xl text-center text-green-800">
-        Order NO. {{$index + 1}}
+        {{'orderChild.no' | translate}} {{$index + 1}}
     </h1>
 
     <table class="w-full text-sm text-left rtl:text-right text-gray-500">
         <thead class="text-xs w-full text-gray-700 uppercase">
             <tr>
-                <th scope="col" class="px-1 text-center py-3 bg-gray-50">Product name</th>
-                <th scope="col" class="px-3 text-center py-3">Price</th>
-                <th scope="col" class="px-3 text-center py-3">Count</th>
-                <th scope="col" class="px-3 text-center py-3 bg-gray-50">Image</th>
-                <th scope="col" class="px-3 text-center py-3">Category</th>
-                <th scope="col" class="px-3 text-center py-3 bg-gray-50">Brand</th>
-                <th scope="col" class="px-3 text-center py-3">Rating</th>
+                <th scope="col" class="px-1 text-center py-3 bg-gray-50">{{'orderChild.no' | translate}}</th>
+                <th scope="col" class="px-3 text-center py-3">{{'orderChild.Price' | translate}}</th>
+                <th scope="col" class="px-3 text-center py-3">{{'orderChild.Count' | translate}}</th>
+                <th scope="col" class="px-3 text-center py-3 bg-gray-50">{{'orderChild.Image' | translate}}</th>
+                <th scope="col" class="px-3 text-center py-3">{{'orderChild.Category' | translate}}</th>
+                <th scope="col" class="px-3 text-center py-3 bg-gray-50">{{'orderChild.Brand' | translate}}</th>
+                <th scope="col" class="px-3 text-center py-3">{{'orderChild.Rating' | translate}}</th>
             </tr>
         </thead>
         <tbody>
@@ -47,7 +47,7 @@
         </tbody>
         <tfoot>
             <tr class="font-semibold text-gray-900">
-                <th scope="row" class="px-3 py-3 text-base text-center">Total</th>
+                <th scope="row" class="px-3 py-3 text-base text-center">{{'orderChild.Total' | translate}}</th>
                 <td class="px-3 text-center py-3 font-bold" colspan="6">{{order.totalOrderPrice | currency}}</td>
             </tr>
         </tfoot>

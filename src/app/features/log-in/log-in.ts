@@ -2,16 +2,20 @@ import { Component, inject } from '@angular/core';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 import { LoginService } from '../../core/services/loginService/login-service';
 import { Router, RouterLink } from '@angular/router';
+import { TranslateModule, TranslatePipe } from '@ngx-translate/core';
+import { MyTranslateService } from '../../core/services/translateService/my-translate-service';
 
 @Component({
   selector: 'app-log-in',
-  imports: [ReactiveFormsModule, RouterLink],
+  imports: [ReactiveFormsModule, RouterLink, TranslateModule],
   templateUrl: './log-in.html',
   styleUrl: './log-in.scss'
 })
 export class LogIn {
   private readonly _LoginServcie = inject(LoginService)
   private readonly _Router = inject(Router)
+  public _MyTranslateService = inject(MyTranslateService)
+
 
   isLoading!: boolean;
   errorMsg: string = '';

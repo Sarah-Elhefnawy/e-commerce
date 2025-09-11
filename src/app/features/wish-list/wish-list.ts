@@ -3,16 +3,19 @@ import { WishListService } from '../../core/services/wishlist/wish-list-service'
 import { ToastrService } from 'ngx-toastr';
 import { IWishList } from '../../core/interfaces/iwish-list';
 import { CarouselModule, OwlOptions } from "ngx-owl-carousel-o";
+import { TranslateModule, TranslatePipe } from '@ngx-translate/core';
+import { MyTranslateService } from '../../core/services/translateService/my-translate-service';
 
 @Component({
   selector: 'app-wish-list',
-  imports: [CarouselModule],
+  imports: [CarouselModule, TranslateModule, TranslatePipe],
   templateUrl: './wish-list.html',
   styleUrl: './wish-list.scss'
 })
 export class WishList {
   private _WishListService = inject(WishListService)
   private _ToastrService = inject(ToastrService)
+  public _MyTranslateService = inject(MyTranslateService)
 
   productList: IWishList[] = []
   imgUrl: string = 'https://ecommerce.routemisr.com/Route-Academy-products/'

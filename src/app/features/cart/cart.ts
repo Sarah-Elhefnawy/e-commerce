@@ -5,10 +5,12 @@ import { CurrencyPipe } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
 import { RouterLink } from '@angular/router';
 import { WishListService } from '../../core/services/wishlist/wish-list-service';
+import { TranslateModule, TranslatePipe } from '@ngx-translate/core';
+import { MyTranslateService } from '../../core/services/translateService/my-translate-service';
 
 @Component({
   selector: 'app-cart',
-  imports: [CurrencyPipe, RouterLink],
+  imports: [CurrencyPipe, RouterLink, TranslateModule, TranslatePipe],
   templateUrl: './cart.html',
   styleUrl: './cart.scss'
 })
@@ -16,6 +18,7 @@ export class Cart {
   private _CartService = inject(CartService)
   private _WishListService = inject(WishListService)
   private _ToastrService = inject(ToastrService)
+  public _MyTranslateService = inject(MyTranslateService)
 
   cartId!: string
   productList: ICartProduct[] = []
@@ -71,6 +74,6 @@ export class Cart {
   ngOnInit(): void {
     this.getCart()
     console.log(this.productList);
-    
+
   }
 }

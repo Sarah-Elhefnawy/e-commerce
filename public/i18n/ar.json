@@ -1,0 +1,116 @@
+{
+    "navbar": {
+        "Home": "الرئيسية",
+        "Brand": "براندات",
+        "Category": "فئات",
+        "Products": "منتجات",
+        "LogOut": "تسجيل خروج",
+        "LogIn": "تسجيل دخول",
+        "SignUp": "تسجيل",
+        "AR": "عربي",
+        "EN": "انجليزي"
+    },
+    "footer": {
+        "h2": "FreshCart احصل على",
+        "p": "سوف نرسل اليك لينك, افتح اللينك على هاتفك لتحميل التطبيق"
+    },
+    "wishList": {
+        "Image": "صور",
+        "Product": "منتج",
+        "Brand": "براند",
+        "Category": "فئة",
+        "Description": "وصف المنتج",
+        "Qty": "كمية",
+        "Price": "سعر",
+        "Rating": "تصنيف",
+        "Action": "اكشن",
+        "Remove": "ازالة"
+    },
+    "allOrders": {
+        "ALL": "كل الاوردرات",
+        "INFO": "معلومات اكتر"
+    },
+    "cart": {
+        "h2": "سلة المشتريات",
+        "summary": "ملخص الاوردر",
+        "Total": "مجموع",
+        "Checkout": "اكمل للدفع",
+        "Clear": "اخلي السلة"
+    },
+    "checkout": {
+        "h2": "ادفع الان",
+        "address": "عنوانك",
+        "addressReq": "يجب ادخال العنوان",
+        "phone": "تليفونك",
+        "phoneReq": "يجب ادخال التليفون",
+        "city": "بلدك",
+        "cityReq": "يجب ادخال البلد"
+    },
+    "home": {
+        "h2": "فئات شائعة"
+    },
+    "logIn": {
+        "h2": "سجل الدخول الان",
+        "email": "ايميل",
+        "emailReq": "يجب ادخال الايميل",
+        "emailVaild": "ادخل ايميل صحيح",
+        "password": "كلمة السر",
+        "passwordReq": "يجب ادخل كلمة السر",
+        "passwordVaild": "ادخل كلمة سر صحيحة",
+        "btn": "اضغط",
+        "forgetPassword": "نسيت كلمة السر؟؟؟"
+    },
+    "notFound": {
+        "btn": "العودة للرئيسية"
+    },
+    "orderChild": {
+        "no": "اوردر رقم",
+        "name": "اسم المنتج",
+        "Price": "سعر",
+        "Count": "عدد",
+        "Image": "صورة",
+        "Category": "فئة",
+        "Brand": "براند",
+        "Rating": "تصنيف",
+        "Total": "مجموع"
+    },
+    "orderUserChild": {
+        "userName": "اسم العميل",
+        "userEmail": "ايميل العميل",
+        "userPhone": "رقم هاتف العيمل",
+        "ShippingAddress": "مدينة عنوان الشحن",
+        "ShippingDetails": "تفاصيل الشحن",
+        "ShippingPhone": "رقم هاتف عملية الشحن",
+        "ShippingPrice": "سعر الشحن",
+        "Tax": "ضريبة",
+        "PaymentType": "نوع وسيلة الدفع",
+        "Paid": "مدفوع",
+        "Delivered": "وصل"
+    },
+    "password": {
+        "forgetPassword": "نسيت كلمة السر",
+        "sendEmail": "ارسل الايميل",
+        "resetCode": "كود تجديد كلمة السر",
+        "code": "الكود",
+        "codeReq": "يدب ادخال الكود",
+        "codeVaild": "ادخل كود صحيح",
+        "sendCode": "ارسل الكود",
+        "resetPassword": "تجديد كلمة السر",
+        "newPassword": "كلمة السر الجديدة"
+    },
+    "signUp": {
+        "Register": "سجل الان",
+        "confirmPassword": "تأكيد كلمة السر",
+        "passwordNoMatch": "كلمة السر لا تتطابق",
+        "nameReq": "يجب ادخال الاسم",
+        "nameMin": "الاسم حد أدنى حرفين",
+        "nameMax": "الاسم حد أقصى حرفين",
+        "phoneReq": "يجب ادخال التليفون",
+        "phoneVaild": "ادخل تليفون صحيح"
+    },
+    "productDetails": {
+        "ProductDetail": "وصف المنتج",
+        "AddToCart": "اضف الى سلة المشتريات",
+        "AddToWishList": "اضف الى المفضلات"
+    }
+}

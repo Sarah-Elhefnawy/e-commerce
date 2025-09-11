@@ -2,15 +2,18 @@ import { Component } from '@angular/core';
 import { IOrder } from '../../core/interfaces/iorder';
 import { OrderService } from '../../core/services/orders/order-service';
 import { CurrencyPipe } from '@angular/common';
+import { TranslateModule, TranslatePipe } from '@ngx-translate/core';
+import { MyTranslateService } from '../../core/services/translateService/my-translate-service';
 
 @Component({
   selector: 'app-order-child',
-  imports: [CurrencyPipe],
+  imports: [CurrencyPipe,TranslateModule, TranslatePipe],
   templateUrl: './order-child.html',
   styleUrl: './order-child.scss'
 })
 export class OrderChild {
-  constructor(private _OrderService: OrderService) { }
+  constructor(private _OrderService: OrderService,private _MyTranslateService: MyTranslateService) { }
+
 
   myorders: IOrder[] = []
 

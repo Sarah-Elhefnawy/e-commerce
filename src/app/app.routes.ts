@@ -1,40 +1,27 @@
 import { Routes } from '@angular/router';
-import { Home } from './features/home/home';
-import { Categories } from './features/categories/categories';
-import { Brands } from './features/brands/brands';
-import { LogIn } from './features/log-in/log-in';
-import { SignUp } from './features/sign-up/sign-up';
-import { Products } from './features/products/products';
-import { NotFound } from './features/not-found/not-found';
-import { Cart } from './features/cart/cart';
-import { ProductDetails } from './features/product-details/product-details';
 import { authGuard } from './core/guards/auth-guard';
 import { loggedInGuard } from './core/guards/logged-in-guard';
-import { Password } from './features/password/password';
-import { CheckOut } from './features/check-out/check-out';
-import { AllOrders } from './features/all-orders/all-orders';
 import { OrderChild } from './features/order-child/order-child';
 import { OrderUserChild } from './features/order-user-child/order-user-child';
-import { WishList } from './features/wish-list/wish-list';
 
 export const routes: Routes = [
-    { path: '', component: Home, title: 'Home' },
-    { path: 'products', component: Products, title: 'Products' },
-    { path: 'product-details/:id', component: ProductDetails, title: 'Product Details' },
-    { path: 'cart', component: Cart, title: 'Cart', canActivate: [authGuard] },
-    { path: 'wishList', component: WishList, title: 'Wish List', canActivate: [authGuard] },
+    { path: '', loadComponent: () => import('./features/home/home').then(c => c.Home), title: 'Home' },
+    { path: 'products', loadComponent: () => import('./features/products/products').then(c => c.Products), title: 'Products' },
+    { path: 'product-details/:id', loadComponent: () => import('./features/product-details/product-details').then(c => c.ProductDetails), title: 'Product Details' },
+    { path: 'cart', loadComponent: () => import('./features/cart/cart').then(c => c.Cart), title: 'Cart', canActivate: [authGuard] },
+    { path: 'wishList', loadComponent: () => import('./features/wish-list/wish-list').then(c => c.WishList), title: 'Wish List', canActivate: [authGuard] },
     {
-        path: 'allorders', component: AllOrders, canActivate: [authGuard], title: 'All Orders', children: [
+        path: 'allorders', loadComponent: () => import('./features/all-orders/all-orders').then(c => c.AllOrders), canActivate: [authGuard], title: 'All Orders',
+        children: [
             { path: '', redirectTo: 'userOrder', pathMatch: 'full' },
             { path: 'userOrder', component: OrderChild },
-            { path: 'userData', component: OrderUserChild }
-        ]
+            { path: 'userData', component: OrderUserChild }]
     },
-    { path: 'checkOut/:id', component: CheckOut, title: 'Payment', canActivate: [authGuard] },
-    { path: 'categories', component: Categories, title: 'Categories' },
-    { path: 'brands', component: Brands, title: 'Brands' },
-    { path: 'logIn', component: LogIn, title: 'LogIn', canActivate: [loggedInGuard] },
-    { path: 'signUp', component: SignUp, title: 'SignUp', canActivate: [loggedInGuard] },
-    { path: 'resetPassword', component: Password, title: 'Forot Password', canActivate: [loggedInGuard] },
-    { path: '**', component: NotFound, title: 'Not Found' },
+    { path: 'checkOut/:id', loadComponent: () => import('./features/check-out/check-out').then(c => c.CheckOut), title: 'Payment', canActivate: [authGuard] },
+    { path: 'categories', loadComponent: () => import('./features/categories/categories').then(c => c.Categories), title: 'Categories' },
+    { path: 'brands', loadComponent: () => import('./features/brands/brands').then(c => c.Brands), title: 'Brands' },
+    { path: 'logIn', loadComponent: () => import('./features/log-in/log-in').then(c => c.LogIn), title: 'LogIn', canActivate: [loggedInGuard] },
+    { path: 'signUp', loadComponent: () => import('./features/sign-up/sign-up').then(c => c.SignUp), title: 'SignUp', canActivate: [loggedInGuard] },
+    { path: 'resetPassword', loadComponent: () => import('./features/password/password').then(c => c.Password), title: 'Forgot Password', canActivate: [loggedInGuard] },
+    { path: '**', loadComponent: () => import('./features/not-found/not-found').then(c => c.NotFound), title: 'Not Found' },
 ];

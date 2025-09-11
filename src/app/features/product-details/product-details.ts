@@ -6,10 +6,12 @@ import { ToastrService } from 'ngx-toastr';
 import { CartService } from '../../core/services/cart/cart-service';
 import { WishListService } from '../../core/services/wishlist/wish-list-service';
 import { CurrencyPipe } from '@angular/common';
+import { TranslateModule, TranslatePipe } from '@ngx-translate/core';
+import { MyTranslateService } from '../../core/services/translateService/my-translate-service';
 
 @Component({
   selector: 'app-product-details',
-  imports: [CarouselModule, CurrencyPipe],
+  imports: [CarouselModule, CurrencyPipe, TranslateModule, TranslatePipe],
   templateUrl: './product-details.html',
   styleUrl: './product-details.scss'
 })
@@ -22,6 +24,7 @@ export class ProductDetails {
   private _CartService = inject(CartService)
   private _WishListService = inject(WishListService)
   private _ToastrService = inject(ToastrService)
+  public _MyTranslateService = inject(MyTranslateService)
 
   getId() {
     this.activated.paramMap.subscribe({

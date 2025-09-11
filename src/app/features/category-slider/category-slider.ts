@@ -31,6 +31,7 @@ export class CategorySlider {
       940: {
         items: 6
       }
-    }
+    },
+    rtl: true
   }
 }

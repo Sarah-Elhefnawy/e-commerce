@@ -5,10 +5,13 @@ import { CartService } from '../../../core/services/cart/cart-service';
 import { FlowbiteService } from './../../../core/services/FlowBite/flowbite-service';
 import { initFlowbite } from 'flowbite';
 import { WishListService } from '../../../core/services/wishlist/wish-list-service';
+import { TranslateModule } from '@ngx-translate/core';
+import { MyTranslateService } from '../../../core/services/translateService/my-translate-service';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-navbar',
-  imports: [RouterLink],
+  imports: [RouterLink,TranslateModule,TranslatePipe],
   templateUrl: './navbar.html',
   styleUrl: './navbar.scss'
 })
@@ -17,6 +20,7 @@ export class Navbar {
   private _LoginService = inject(LoginService)
   private _CartService = inject(CartService)
   private _WishListService = inject(WishListService)
+  public _MyTranslateService = inject(MyTranslateService)
 
   isLoggedIn!: boolean
   cartNumber: number = 0

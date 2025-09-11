@@ -2,16 +2,19 @@ import { Component, inject } from '@angular/core';
 import { ReactiveFormsModule, FormGroup, FormControl, AbstractControl, Validators } from '@angular/forms';
 import { AuthService } from '../../core/services/authService/auth-service';
 import { Router } from '@angular/router';
+import { TranslateModule, TranslatePipe } from '@ngx-translate/core';
+import { MyTranslateService } from '../../core/services/translateService/my-translate-service';
 
 @Component({
   selector: 'app-sign-up',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, TranslateModule, TranslatePipe],
   templateUrl: './sign-up.html',
   styleUrl: './sign-up.scss'
 })
 export class SignUp {
   private readonly _AuthService = inject(AuthService)
   private readonly _Router = inject(Router)
+  public _MyTranslateService = inject(MyTranslateService)
 
   isLoading!: boolean;
   errorMsg: string = '';
