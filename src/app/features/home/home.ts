@@ -16,25 +16,22 @@ import { MyTranslateService } from '../../core/services/translateService/my-tran
   styleUrl: './home.scss'
 })
 export class Home {
-  // private readonly _ProductsService = inject(ECommerceService);
+  constructor(private _ProductsService: ECommerceService, private _MyTranslateService: MyTranslateService) { }
 
-  constructor(private _ProductsService: ECommerceService,private _MyTranslateService: MyTranslateService) { }
-
-  // productSubId!:Subscription;
+  productSubId!: Subscription;
   inputText: string = ''
 
   dataList: WritableSignal<IProduct[]> = signal([])
 
   ngOnInit(): void {
-    // this.productSubId = this._ProductsService.getProducts().subscribe({
-    this._ProductsService.getProducts().subscribe({
+    this.productSubId = this._ProductsService.getProducts().subscribe({
       next: (res) => {
         this.dataList.set(res.data)
       }
     })
   }
 
-  // ngOnDestroy():void{
-  //   this.productSubId.unsubscribe()
-  // }
+  ngOnDestroy(): void {
+    this.productSubId.unsubscribe()
+  }
 }

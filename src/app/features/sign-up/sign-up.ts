@@ -43,9 +43,7 @@ export class SignUp {
         next: (res) => {
           console.log(res);
           if (res.message == 'success') {
-            // login
             this.isLoading = false
-            // console.log(this.registerForm.value);
             this._Router.navigate(['/logIn'])
           }
         },
@@ -58,15 +56,5 @@ export class SignUp {
       this.registerForm.markAllAsTouched()
       this.isLoading = false
     }
-  }
-
-  constructor() {
-    this.registerForm.valueChanges.subscribe(values => {
-      console.log('Form values changed:', values);
-      console.log('Form valid:', this.registerForm.valid);
-      console.log('Form errors:', this.registerForm.errors);
-      console.log('Password errors:', this.registerForm.get('password')?.errors);
-      console.log('Email errors:', this.registerForm.get('email')?.errors);
-    });
   }
 }

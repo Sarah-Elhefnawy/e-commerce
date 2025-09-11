@@ -1,9 +1,9 @@
 <div class="w-full max-w-sm bg-white border overflow-hidden border-gray-200 rounded-lg shadow-sm">
-    <div class="p-1 py-1.5 md:p-3" [routerLink]="['/product-details',cardDetails._id]">
-        <img class="p-1 rounded-t-lg h-[250px]" [src]='cardDetails.imageCover' alt="product image" />
-        <div class="px-0.5 pb-1">
-            <h4 class="text-md font-semibold tracking-tight text-gray-900">{{cardDetails.category.name}}</h4>
-            <h5 class="text-md font-semibold tracking-tight text-gray-900">{{cardDetails.title | uppercase}}</h5>
+    <div class="px-3 py-2.5 md:p-4 overflow-hidden" [routerLink]="['/product-details',cardDetails._id]">
+        <img class="p-1 rounded-t-lg h-[150px] mx-auto" [src]='cardDetails.imageCover' alt="product image" />
+        <div class="pb-1">
+            <h5 class="text-sm md:text-md font-bold tracking-tight text-gray-900 truncate">{{(cardDetails.title | uppercase).split(' ').slice(0,3).join(' ')}}</h5>
+            <h4 class="text-sm md:text-md font-semibold tracking-tight text-gray-900">{{cardDetails.category.name}}</h4>
         </div>
         <div class="flex items-center mt-1 mb-1.5">
             <div class="flex items-center rtl:space-x-reverse">
@@ -34,7 +34,7 @@
                 </svg>
             </div>
             <span
-                class="bg-green-00 text-green-800 text-xs font-semibold md:px-2.5 py-0.5 rounded-sm md:ms-3 ms-1">{{cardDetails.ratingsAverage}}</span>
+                class="bg-green-00 text-green-800 text-xs font-semibold md:px-2.5 py-0.5 rounded-sm md:ms-3 ms-auto">{{cardDetails.ratingsAverage}}</span>
         </div>
 
         <div class="flex items-center space-x-3">
@@ -44,7 +44,7 @@
                 {{'productDetails.AddToCart' | translate}}
             </button>
             <button (click)="addProductToWishList(cardDetails._id); $event.stopPropagation(); $event.preventDefault()"
-                class="w-12 h-12 cursor-pointer flex items-center justify-center bg-gray-100 hover:bg-gray-200 rounded-lg">
+                class="w-11 h-11 cursor-pointer flex items-center justify-center bg-gray-100 hover:bg-gray-200 rounded-lg">
                 <i class="fa-solid fa-heart text-gray-600"></i>
             </button>
         </div>

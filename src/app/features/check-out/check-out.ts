@@ -4,6 +4,7 @@ import { CheckOutService } from '../../core/services/checkOut/check-out-service'
 import { ActivatedRoute } from '@angular/router';
 import { TranslateModule, TranslatePipe } from '@ngx-translate/core';
 import { MyTranslateService } from '../../core/services/translateService/my-translate-service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-check-out',
@@ -19,6 +20,7 @@ export class CheckOut {
   isLoading!: boolean;
   cartId!: string | null;
   errorMsg: string = '';
+  productSubId!: Subscription;
 
   checkOutForm = new FormGroup({
     details: new FormControl('', [Validators.required]),
@@ -30,8 +32,12 @@ export class CheckOut {
     this.getIdFromUrl()
   }
 
+  ngOnDestroy(): void {
+    this.productSubId.unsubscribe()
+  }
+
   getIdFromUrl() {
-    this._ActivatedRoute.paramMap.subscribe({
+    this.productSubId = this._ActivatedRoute.paramMap.subscribe({
       next: (res) => {
         this.cartId = res.get('id')
       },

@@ -15,6 +15,7 @@
         "p": "We Will Send You a Link, Open it on Your Phone to download the app"
     },
     "wishList": {
+        "h2":"My Wishlist",
         "Image": "Image",
         "Product": "Product",
         "Brand": "Brand",
@@ -112,5 +113,8 @@
         "ProductDetail": "Product Details",
         "AddToCart": "Add to Cart",
         "AddToWishList": "Add to WishList"
+    },
+    "products": {
+        "search": "Search By Name"
     }
 }

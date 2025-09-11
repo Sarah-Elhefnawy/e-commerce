@@ -5,10 +5,12 @@ import { IWishList } from '../../core/interfaces/iwish-list';
 import { CarouselModule, OwlOptions } from "ngx-owl-carousel-o";
 import { TranslateModule, TranslatePipe } from '@ngx-translate/core';
 import { MyTranslateService } from '../../core/services/translateService/my-translate-service';
+import { Subscription } from 'rxjs';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-wish-list',
-  imports: [CarouselModule, TranslateModule, TranslatePipe],
+  imports: [CarouselModule, TranslateModule, TranslatePipe, RouterLink],
   templateUrl: './wish-list.html',
   styleUrl: './wish-list.scss'
 })
@@ -19,11 +21,12 @@ export class WishList {
 
   productList: IWishList[] = []
   imgUrl: string = 'https://ecommerce.routemisr.com/Route-Academy-products/'
+  productSubId!: Subscription;
 
   myWishLists: IWishList[] = []
 
   getWishListProducts() {
-    this._WishListService.getWishListProducts().subscribe({
+    this.productSubId = this._WishListService.getWishListProducts().subscribe({
       next: (res) => {
         this.myWishLists = res
         this._WishListService.wishListNum.next(res.count)
@@ -65,5 +68,9 @@ export class WishList {
       }
     },
     nav: true
+  }
+
+  ngOnDestroy():void{
+    this.productSubId.unsubscribe()
   }
 }

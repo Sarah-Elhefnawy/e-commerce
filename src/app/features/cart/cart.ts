@@ -7,6 +7,7 @@ import { RouterLink } from '@angular/router';
 import { WishListService } from '../../core/services/wishlist/wish-list-service';
 import { TranslateModule, TranslatePipe } from '@ngx-translate/core';
 import { MyTranslateService } from '../../core/services/translateService/my-translate-service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-cart',
@@ -23,9 +24,10 @@ export class Cart {
   cartId!: string
   productList: ICartProduct[] = []
   totalPrice: number = 0
+  productSubId!: Subscription;
 
   getCart() {
-    this._CartService.getCartProducts().subscribe({
+    this.productSubId = this._CartService.getCartProducts().subscribe({
       next: (res) => {
         this.cartId = res.data._id
         this.totalPrice = res.data.totalCartPrice
@@ -73,7 +75,9 @@ export class Cart {
 
   ngOnInit(): void {
     this.getCart()
-    console.log(this.productList);
+  }
 
+  ngOnDestroy(): void {
+    this.productSubId.unsubscribe()
   }
 }

@@ -1,5 +1,12 @@
-<div class="container w-[95%] mx-auto my-10">
-    <section class="flex flex-wrap justify-center">
+<section class="flex flex-wrap justify-center">
+    <div class="block text-center text-green-800 pt-5">
+        <i class="fa-solid fa-heart fa-3x"></i>
+        <h2
+            class="my-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl lg:text-6xl text-center text-green-800">
+            {{'wishList.h2' | translate}}</h2>
+    </div>
+
+    <div class="container w-[95%] mx-auto my-4">
         <div class="relative w-full overflow-x-auto shadow-md sm:rounded-lg">
             @if (productList.length !== 0) {
             <table class="w-full p-5 text-sm text-left rtl:text-right text-gray-500">
@@ -8,9 +15,6 @@
                         <th scope="col" class="px-16 py-3">
                             <span class="sr-only">{{'wishList.Image' | translate}}</span>
                         </th>
-                        <!-- <th scope="col" class="px-16 py-3">
-                                <span class="sr-only">Imagesss</span>
-                            </th> -->
                         <th scope="col" class="px-6 py-3">
                             {{'wishList.Product' | translate}}
                         </th>
@@ -41,19 +45,10 @@
                     @for (item of productList; track $index) {
                     <tr class="bg-white border-b border-gray-200 hover:bg-gray-50">
                         <td class="p-4">
-                            <img [src]="item.imageCover" class="w-16 md:w-32 max-w-full max-h-full" alt="iPhone 12">
+                            <a [routerLink]="['/product-details',item._id]">
+                                <img [src]="item.imageCover" class="w-16 md:w-32 max-w-full max-h-full" alt="iPhone 12">
+                            </a>
                         </td>
-                        <!-- <td class="p-1">
-                                <owl-carousel-o [options]="customOptions">
-    
-                                    @for (slide of item.images; track $index) {
-                                    <ng-template carouselSlide id="$index">
-                                        <img class='h-[250px]' [src]='imgUrl + slide'>
-                                    </ng-template>
-                                    }
-    
-                                </owl-carousel-o>
-                            </td> -->
                         <td class="px-6 py-4 font-semibold text-gray-900">{{item.title}}</td>
                         <td class="px-6 py-4 font-semibold text-gray-900">{{item.brand.name}}</td>
                         <td class="px-6 py-4 font-semibold text-gray-900">{{item.category.name}}</td>
@@ -65,7 +60,8 @@
                         <td class="px-6 py-4 font-semibold text-gray-900">{{item.ratingsAverage}}</td>
                         <td class="px-6 py-4">
                             <a (click)="removeItem(item._id)"
-                                class="cursor-pointer font-medium text-red-600 hover:underline">{{'wishList.Remove' | translate}}</a>
+                                class="cursor-pointer font-medium text-red-600 hover:underline">{{'wishList.Remove' |
+                                translate}}</a>
                         </td>
                     </tr>
                     }
@@ -75,5 +71,5 @@
             <img src="./images/empty cart.png" class="w-[40%] mx-auto" alt="">
             }
         </div>
-    </section>
-</div>
+    </div>
+</section>

@@ -14,7 +14,6 @@ import { MyTranslateService } from '../../core/services/translateService/my-tran
 export class OrderChild {
   constructor(private _OrderService: OrderService,private _MyTranslateService: MyTranslateService) { }
 
-
   myorders: IOrder[] = []
 
   getUserOrders() {

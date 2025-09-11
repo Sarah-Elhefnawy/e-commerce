@@ -1,11 +1,25 @@
 <div class="my-5 w-[50%] mx-auto">
     <input [(ngModel)]="inputText" class="w-full p-2 border border-green-500 rounded-xl" type="text"
-        placeholder="Search by name...">
+        placeholder="{{'products.search' | translate}}">
 </div>
 <div class="grid grid-cols-12 mt-2 gap-4 p-4">
-    @for(data of dataList() | search: inputText ;track data._id){
-    <div class="md:col-span-2 col-span-4">
+    @for(data of dataList().slice(0,20) | search: inputText ;track data._id){
+    <div class="col-span-6 md:col-span-4 lg:col-span-3">
         <app-product-card [cardDetails]="data" />
     </div>
+    }
+    
+    <!-- Lazy Loading -->
+    @defer (on interaction) {
+    @for(data of dataList().slice(20);track data.id){
+    <div class="col-span-6 md:col-span-4 lg:col-span-3">
+        <app-product-card [cardDetails]="data" />
+    </div>
+    }
+    }
+    @placeholder {
+    <button type="button"
+        class="text-green-800 cursor-pointer hover:text-white border border-green-800 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-lg w-30 h-15 text-center me-2 mb-2">Load
+        More</button>
     }
 </div>

@@ -1,8 +1,6 @@
 import { Component, signal, WritableSignal } from '@angular/core';
 import { CategoriesService } from '../../core/services/categories/categories-service';
-import { ICategory } from '../../core/interfaces/icategory';
 import { CategorySlider } from "../category-slider/category-slider";
-import { CheckOutService } from './../../core/services/checkOut/check-out-service';
 
 @Component({
   selector: 'app-categories',
@@ -11,14 +9,11 @@ import { CheckOutService } from './../../core/services/checkOut/check-out-servic
   styleUrl: './categories.scss'
 })
 export class Categories {
-  constructor(private _CategoriesService: CategoriesService, private _CheckOutService: CheckOutService) { }
-
-  // productSubId!:Subscription;
+  constructor(private _CategoriesService: CategoriesService) { }
 
   dataList: WritableSignal<any[]> = signal([])
 
   getAllCategories(): void {
-    // this.productSubId = this._CategoriesService.getAllCategories().subscribe({
     this._CategoriesService.getAllCategories().subscribe({
       next: (res) => {
         this.dataList.set(res.data)
@@ -29,8 +24,4 @@ export class Categories {
   ngOnInit(): void {
     this.getAllCategories()
   }
-
-  // ngOnDestroy():void{
-  //   this.productSubId.unsubscribe()
-  // }
 }

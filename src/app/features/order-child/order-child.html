@@ -1,9 +1,9 @@
 @for (order of myorders; track $index) {
 <div class="order-container mb-8">
-    <h1
-        class="mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl lg:text-6xl text-center text-green-800">
+    <h2
+        class="mb-4 text-3xl font-extrabold leading-none tracking-tight md:text-4xl lg:text-5xl text-center text-green-800">
         {{'orderChild.no' | translate}} {{$index + 1}}
-    </h1>
+    </h2>
 
     <table class="w-full text-sm text-left rtl:text-right text-gray-500">
         <thead class="text-xs w-full text-gray-700 uppercase">
@@ -30,7 +30,7 @@
                     <p class="text-center">{{item.count}}</p>
                 </td>
                 <td class="px-3 py-4 bg-gray-50">
-                    <img class="w-16 h-16 mx-auto object-contain" [src]="item.product.imageCover"
+                    <img class="w-16 mx-auto object-contain" [src]="item.product.imageCover"
                         [alt]="item.product.title">
                 </td>
                 <td class="px-3 py-4">

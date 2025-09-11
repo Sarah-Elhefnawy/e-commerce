@@ -1,5 +1,5 @@
 <div class="max-w-6xl mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-12 gap-8">
-    <div class="md:col-span-4">
+    <div class="sm:col-span-4 w-[50%] mx-auto">
         <owl-carousel-o [options]="customOptions">
 
             @for (slide of productDetails().images; track $index) {
@@ -11,9 +11,9 @@
         </owl-carousel-o>
     </div>
 
-    <div class="md:col-span-8 flex flex-col justify-between space-y-6 bg-white p-6 rounded-lg shadow-lg">
+    <div class="sm:col-span-8 flex flex-col justify-between space-y-6 bg-white p-6 rounded-lg shadow-lg">
         <h1 class="text-2xl md:text-3xl font-bold mb-4">{{productDetails()?.title}}</h1>
-        <p class="text-gray-700 mb-6 leading-relaxed">{{productDetails()?.description}}</p>
+        <p class="text-gray-700 mb-6 leading-relaxed max-w-md">{{productDetails()?.description}}</p>
 
         <div>
             <h3 class="text-lg font-semibold mb-2">{{'productDetails.ProductDetail' | translate}}</h3>

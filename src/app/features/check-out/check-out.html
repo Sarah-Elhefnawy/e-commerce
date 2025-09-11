@@ -1,13 +1,13 @@
-<section class="w-[50%] p-4 mx-auto my-4 bg-grey-400 border-rounded-md shadow border-grey-500">
-    <h2 class="text-center text-4xl font-medium">{{'checkout.h2' | translate}}</h2>
+<section class="w-[80%] lg:w-[60%] p-4 mx-auto my-4 bg-grey-400 border-rounded-md shadow border-grey-500">
+    <h2 class="text-center text-4xl mb-10 font-medium">{{'checkout.h2' | translate}}</h2>
 
     <form [formGroup]="checkOutForm" (ngSubmit)="submitBtn()" class="max-w-md mx-auto my-4">
         <div class="relative z-0 w-full mb-5 group">
             <input type="text" formControlName="details" name="floating_details" id="floating_details"
-                class="block py-2.5 px-0 w-full text-sm text-gray-400 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                class="block py-2.5 px-0 w-full text-sm text-gray-400 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-green-600 peer"
                 placeholder=" " />
             <label for="floating_details"
-                class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">{{'checkout.address' | translate}}</label>
+                class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-1 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-green-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">{{'checkout.address' | translate}}</label>
         </div>
         @if(checkOutForm.get('details')?.errors && checkOutForm.get('details')?.touched){
         @if(checkOutForm.get('details')?.getError('')){
@@ -17,10 +17,10 @@
 
         <div class="relative z-0 w-full mb-5 group">
             <input type="tel" formControlName="phone" name="floating_phone" id="floating_phone"
-                class="block py-2.5 px-0 w-full text-sm text-gray-400 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                class="block py-2.5 px-0 w-full text-sm text-gray-400 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-green-600 peer"
                 placeholder=" " />
             <label for="floating_phone"
-                class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">{{'checkout.phone' | translate}}</label>
+                class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-1 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-green-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">{{'checkout.phone' | translate}}</label>
         </div>
         @if(checkOutForm.get('phone')?.errors && checkOutForm.get('phone')?.touched){
         @if(checkOutForm.get('phone')?.getError('')){
@@ -30,10 +30,10 @@
 
         <div class="relative z-0 w-full mb-5 group">
             <input type="text" formControlName="city" name="floating_city" id="floating_city"
-                class="block py-2.5 px-0 w-full text-sm text-gray-400 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                class="block py-2.5 px-0 w-full text-sm text-gray-400 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-green-600 peer"
                 placeholder=" " />
             <label for="floating_city"
-                class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">{{'checkout.city' | translate}}</label>
+                class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-1 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-green-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">{{'checkout.city' | translate}}</label>
         </div>
         @if(checkOutForm.get('city')?.errors && checkOutForm.get('city')?.touched){
         @if(checkOutForm.get('city')?.getError('')){
@@ -43,7 +43,7 @@
 
         <p class="text-red-700">{{errorMsg}}</p>
         <button
-            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">{{'checkout.h2' | translate}}
+            class="text-white bg-green-700 hover:bg-green-800 cursor-pointer focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">{{'checkout.h2' | translate}}
             @if(isLoading){
             <i class="fas fa-spinner"></i>
             }

@@ -8,6 +8,7 @@ import { WishListService } from '../../core/services/wishlist/wish-list-service'
 import { CurrencyPipe } from '@angular/common';
 import { TranslateModule, TranslatePipe } from '@ngx-translate/core';
 import { MyTranslateService } from '../../core/services/translateService/my-translate-service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-product-details',
@@ -17,6 +18,7 @@ import { MyTranslateService } from '../../core/services/translateService/my-tran
 })
 export class ProductDetails {
   productId!: string | null;
+  productSubId!: Subscription;
 
   productDetails: WritableSignal<any> = signal({});
   private activated = inject(ActivatedRoute);
@@ -27,7 +29,7 @@ export class ProductDetails {
   public _MyTranslateService = inject(MyTranslateService)
 
   getId() {
-    this.activated.paramMap.subscribe({
+    this.productSubId = this.activated.paramMap.subscribe({
       next: (res) => {
         this.productId = res.get('id')
       }
@@ -35,7 +37,7 @@ export class ProductDetails {
   }
 
   getProductDetails() {
-    this._ProductService.getOneProduct(this.productId).subscribe({
+    this.productSubId = this._ProductService.getOneProduct(this.productId).subscribe({
       next: (res) => {
         this.productDetails.set(res.data)
       },
@@ -65,6 +67,10 @@ export class ProductDetails {
     this.getProductDetails();
   }
 
+  ngOnDestroy(): void {
+    this.productSubId.unsubscribe()
+  }
+
   customOptions: OwlOptions = {
     loop: true,
     mouseDrag: false,
@@ -81,6 +87,7 @@ export class ProductDetails {
         items: 1
       }
     },
-    nav: true
+    nav: true,
+    rtl: true
   }
 }
