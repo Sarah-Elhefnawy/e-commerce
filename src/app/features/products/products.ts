@@ -17,8 +17,13 @@ import { Subscription } from 'rxjs';
 export class Products {
   private readonly _ProductsService = inject(ECommerceService);
   public _MyTranslateService = inject(MyTranslateService)
-  productSubId!:Subscription;
+  productSubId!: Subscription;
   inputText: string = ''
+  isAllDataLoaded = false;
+
+  loadAllData() {
+    this.isAllDataLoaded = true;
+  }
 
   dataList: WritableSignal<IProduct[]> = signal([])
 
@@ -30,7 +35,7 @@ export class Products {
     })
   }
 
-  ngOnDestroy():void{
+  ngOnDestroy(): void {
     this.productSubId.unsubscribe()
   }
 }

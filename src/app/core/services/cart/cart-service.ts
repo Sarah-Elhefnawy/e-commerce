@@ -18,7 +18,7 @@ export class CartService {
   }
 
   initializeCart(): void {
-    if (isPlatformBrowser(this._PLATFORM_ID)) {
+    if (isPlatformBrowser(this._PLATFORM_ID) && localStorage.getItem('token')) {
       this.getCartProducts().subscribe({
         next: (res) => {
           this.cartNum.next(res.numOfCartItems);

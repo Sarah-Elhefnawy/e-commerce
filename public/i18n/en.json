@@ -42,8 +42,6 @@
         "h2": "Pay Now",
         "address": "Detailed Address",
         "addressReq": "Address is required",
-        "phone": "Phone",
-        "phoneReq": "Phone is required",
         "city": "City Address",
         "cityReq": "City is required"
     },
@@ -106,6 +104,7 @@
         "nameReq": "Name is required",
         "nameMin": "Name is minimum 2 characters",
         "nameMax": "Name is maximum 20 characters",
+        "phone": "Phone",
         "phoneReq": "Phone is required",
         "phoneVaild": "Enter Valid Phone"
     },

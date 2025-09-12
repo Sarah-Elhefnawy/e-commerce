@@ -21,14 +21,13 @@ export class LogIn {
   errorMsg: string = '';
 
   logInForm = new FormGroup({
-    password: new FormControl(null, [Validators.required]),
-    // password: new FormControl(null, [Validators.required, Validators.email]),
-    email: new FormControl(null, [Validators.required]),
-    // email: new FormControl(null, [Validators.required, Validators.pattern(/^\w{6,}$/)]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl(null, [Validators.required, Validators.pattern(/^\w{6,}$/)]),
   })
 
   submitBtn() {
     this.isLoading = true
+
     if (this.logInForm.valid) {
       this._LoginServcie.sendRegisterForm(this.logInForm.value).subscribe({
         next: (res) => {
@@ -43,10 +42,12 @@ export class LogIn {
           }
         },
         error: (err) => {
+          this.isLoading = false
           this.errorMsg = err.error.message
         },
       })
     } else {
+      this.isLoading = false
       this.logInForm.markAllAsTouched()
     }
   }

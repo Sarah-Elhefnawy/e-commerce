@@ -8,10 +8,11 @@
         <app-product-card [cardDetails]="data" />
     </div>
     }
-    
+
     <!-- Lazy Loading -->
+    @if (!inputText) {
     @defer (on interaction) {
-    @for(data of dataList().slice(20);track data.id){
+    @for(data of dataList().slice(20);track data._id){
     <div class="col-span-6 md:col-span-4 lg:col-span-3">
         <app-product-card [cardDetails]="data" />
     </div>
@@ -19,7 +20,9 @@
     }
     @placeholder {
     <button type="button"
-        class="text-green-800 cursor-pointer hover:text-white border border-green-800 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-lg w-30 h-15 text-center me-2 mb-2">Load
-        More</button>
+        class="text-green-800 cursor-pointer hover:text-white border border-green-800 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-lg w-30 h-15 text-center me-2 mb-2">
+        Load More
+    </button>
+    }
     }
 </div>

@@ -2,49 +2,48 @@
     <h2 class="text-center text-3xl mb-8 font-bold">{{'logIn.h2' | translate}}</h2>
 
     <form [formGroup]="logInForm" (ngSubmit)="submitBtn()" class="max-w-md mx-auto my-4">
-        <div class="relative z-0 w-full mb-5 group">
+        <div class="relative z-0 w-full mb-4 group">
             <input type="email" formControlName="email" name="floating_email" id="floating_email"
                 class="block py-2.5 px-0 w-full text-sm text-gray-400 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-green-600 peer"
                 placeholder=" " />
             <label for="floating_email"
-                class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-1 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-green-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">{{'logIn.email' | translate}}</label>
+                class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-1 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-green-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                {{'logIn.email' | translate}}</label>
         </div>
-        <!-- @if(logInForm.get('email')?.errors && logInForm.get('email')?.touched){
-        @if(logInForm.get('email')?.getError('')){
-        <p class="text-red-700">{{'logIn.emailReq' | translate}}</p>
+        @if(logInForm.get('email')?.errors && logInForm.get('email')?.touched){
+        @if(logInForm.get('email')?.getError('required')){
+        <p class="text-red-700 pb-4">{{'logIn.emailReq' | translate}}</p>
         }
-        @if(logInForm.get('email')?.getError('pattern')){
-        <p class="text-red-700">{{'logIn.emailVaild' | translate}}</p>
+        @if(logInForm.get('email')?.getError('email')){
+        <p class="text-red-700 pb-4">{{'logIn.emailVaild' | translate}}</p>
         }
-        } -->
+        }
 
-
-        <div class="relative z-0 w-full mb-5 group">
+        <div class="relative z-0 w-full mb-4 group">
             <input type="password" formControlName="password" name="floating_password" id="floating_password"
                 class="block py-2.5 px-0 w-full text-sm text-gray-400 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer"
                 placeholder=" " />
             <label for="floating_password"
-                class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-1 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-green-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">{{'logIn.passwordVaild' | translate}}</label>
+                class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-1 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-green-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">{{'logIn.password'
+                | translate}}</label>
         </div>
-        <!-- @if(logInForm.get('password')?.errors && logInForm.get('password')?.touched){
-        @if(logInForm.get('password')?.getError('')){
-        <p class="text-red-700">{{'logIn.passwordReq' | translate}}</p>
+        @if(logInForm.get('password')?.errors && logInForm.get('password')?.touched){
+        @if(logInForm.get('password')?.getError('required')){
+        <p class="text-red-700 pb-4">{{'logIn.passwordReq' | translate}}</p>
         }
         @if(logInForm.get('password')?.getError('pattern')){
         <p class="text-red-700">{{'logIn.passwordVaild' | translate}}</p>
         }
-        } -->
-
+        }
 
         <p class="text-red-700">{{errorMsg}}</p>
         <button
-            class="text-white cursor-pointer bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">{{'logIn.btn' | translate}}
+            class="text-white cursor-pointer bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">{{'logIn.btn'
+            | translate}}
             @if(isLoading){
             <i class="fas fa-spinner"></i>
             }
         </button>
-        <!-- <button [disabled]="logInForm.invalid"
-            class="text-white cursor-pointer bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Submit</button> -->
 
         <div>
             <a class="text-red-700 underline" routerLink="/resetPassword">{{'logIn.forgetPassword' | translate}}</a>

@@ -11,7 +11,7 @@
         </div>
         @if(checkOutForm.get('details')?.errors && checkOutForm.get('details')?.touched){
         @if(checkOutForm.get('details')?.getError('')){
-        <p class="text-red-700">{{'checkout.addressReq' | translate}}</p>
+        <p class="text-red-700 pb-5">{{'checkout.addressReq' | translate}}</p>
         }
         }
 
@@ -20,11 +20,14 @@
                 class="block py-2.5 px-0 w-full text-sm text-gray-400 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-green-600 peer"
                 placeholder=" " />
             <label for="floating_phone"
-                class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-1 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-green-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">{{'checkout.phone' | translate}}</label>
+                class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-1 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-green-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">{{'signUp.phone' | translate}}</label>
         </div>
         @if(checkOutForm.get('phone')?.errors && checkOutForm.get('phone')?.touched){
-        @if(checkOutForm.get('phone')?.getError('')){
-        <p class="text-red-700">{{'checkout.phoneReq' | translate}}</p>
+        @if(checkOutForm.get('phone')?.getError('required')){
+        <p class="text-red-700 pb-5 pb-6">{{'signUp.phoneReq' | translate}}</p>
+        }
+        @if(checkOutForm.get('phone')?.getError('pattern')){
+        <p class="text-red-700 pb-5">{{'signUp.phoneVaild' | translate}}</p>
         }
         }
 
@@ -37,11 +40,11 @@
         </div>
         @if(checkOutForm.get('city')?.errors && checkOutForm.get('city')?.touched){
         @if(checkOutForm.get('city')?.getError('')){
-        <p class="text-red-700">{{'checkout.cityReq' | translate}}</p>
+        <p class="text-red-700 pb-5">{{'checkout.cityReq' | translate}}</p>
         }
         }
 
-        <p class="text-red-700">{{errorMsg}}</p>
+        <p class="text-red-700 pb-5">{{errorMsg}}</p>
         <button
             class="text-white bg-green-700 hover:bg-green-800 cursor-pointer focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">{{'checkout.h2' | translate}}
             @if(isLoading){

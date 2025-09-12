@@ -24,7 +24,7 @@ export class SignUp {
     password: new FormControl('', [Validators.required, Validators.pattern(/^\w{6,}$/)]),
     rePassword: new FormControl('', [Validators.required, Validators.pattern(/^\w{6,}$/)]),
     email: new FormControl('', [Validators.required, Validators.email]),
-    phone: new FormControl('', [Validators.required]),
+    phone: new FormControl('', [Validators.required, Validators.pattern(/^01[0125]\d{8}$/)])
   }, { validators: this.confirmPassword })
 
   confirmPassword(group: AbstractControl) {
@@ -41,15 +41,15 @@ export class SignUp {
     if (this.registerForm.valid) {
       this._AuthService.sendRegisterForm(this.registerForm.value).subscribe({
         next: (res) => {
-          console.log(res);
           if (res.message == 'success') {
             this.isLoading = false
             this._Router.navigate(['/logIn'])
           }
         },
         error: (err) => {
+          this.isLoading = false
           this.errorMsg = err.error.message
-        },
+        }
       })
 
     } else {

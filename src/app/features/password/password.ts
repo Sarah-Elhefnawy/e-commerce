@@ -34,6 +34,7 @@ export class Password {
         if (res.statusMsg == 'success') {
           this._ToastrService.success(res.message, res.statusMsg)
           this.step = 2
+          this.errorMsg = ''
         }
       },
       error: err => {
@@ -55,6 +56,7 @@ export class Password {
         if (res.status == 'Success') {
           this._ToastrService.success(res.status)
           this.step = 3
+          this.errorMsg = ''
         }
       },
       error: err => {
@@ -66,7 +68,7 @@ export class Password {
 
   resetPasswordForm: FormGroup = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
-    newPassword: new FormControl('', [Validators.required]),
+    newPassword: new FormControl('', [Validators.required, Validators.pattern(/^\w{6,}$/)]),
   })
 
   submitNewPassword() {
@@ -74,10 +76,13 @@ export class Password {
     this._ForgetPassword.resetPassword(this.resetPasswordForm.value).subscribe({
       next: res => {
         this.isLoading = false
+        this.errorMsg = ''
         this._Router.navigate(['/logIn'])
       },
       error: err => {
         this.isLoading = false
+        console.log(err);
+        
         this.errorMsg = err.error.message
       }
     })

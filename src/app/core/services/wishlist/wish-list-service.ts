@@ -18,7 +18,7 @@ export class WishListService {
   }
 
   initializeWishList(): void {
-    if (isPlatformBrowser(this._PLATFORM_ID)) {
+    if (isPlatformBrowser(this._PLATFORM_ID) && localStorage.getItem('token')) {
       this.getWishListProducts().subscribe({
         next: (res) => {
           this.wishListNum.next(res.count);

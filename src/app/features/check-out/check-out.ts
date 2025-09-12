@@ -24,7 +24,7 @@ export class CheckOut {
 
   checkOutForm = new FormGroup({
     details: new FormControl('', [Validators.required]),
-    phone: new FormControl('', [Validators.required]),
+    phone: new FormControl('', [Validators.required, Validators.pattern(/^01[0125]\d{8}$/)]),
     city: new FormControl('', [Validators.required]),
   })
 
