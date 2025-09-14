@@ -57,7 +57,7 @@ export class ProductDetails {
     this._WishListService.addProductToWishList(this.productId).subscribe({
       next: (res) => {
         this._ToastrService.success(res.message, 'success')
-        this._WishListService.wishListNum.next(res.count)
+        this._WishListService.wishListNum.next(res.data.length)
       }
     })
   }

@@ -12,7 +12,10 @@
     },
     "footer": {
         "h2": "Get The FreshCart App",
-        "p": "We Will Send You a Link, Open it on Your Phone to download the app"
+        "p": "We Will Send You a Link, Open it on Your Phone to download the app",
+        "share": "Share App Link",
+        "partners": "Payment partners",
+        "delivery": "Get Deliveries with FreshCart"
     },
     "wishList": {
         "h2":"My Wishlist",
@@ -21,7 +24,7 @@
         "Brand": "Brand",
         "Category": "Category",
         "Description": "Description",
-        "Qty": "Qty",
+        "Qty": "Quantity",
         "Price": "Price",
         "Rating": "Rating",
         "Action": "Action",
@@ -46,7 +49,8 @@
         "cityReq": "City is required"
     },
     "home": {
-        "h2": "Show Popular Categories"
+        "h2": "Show Popular Categories",
+        "span": "(scroll to view more)"
     },
     "logIn": {
         "h2": "Login Now",
@@ -111,7 +115,8 @@
     "productDetails": {
         "ProductDetail": "Product Details",
         "AddToCart": "Add to Cart",
-        "AddToWishList": "Add to WishList"
+        "AddToWishList": "Add to WishList",
+        "Click": "Click to display details"
     },
     "products": {
         "search": "Search By Name"

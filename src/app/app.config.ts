@@ -1,5 +1,5 @@
 import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZoneChangeDetection } from '@angular/core';
-import { provideRouter, withInMemoryScrolling, withViewTransitions } from '@angular/router';
+import { provideRouter } from '@angular/router';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { routes } from './app.routes';
 import { provideToastr } from 'ngx-toastr';
@@ -16,7 +16,8 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(routes, withViewTransitions(), withInMemoryScrolling()), provideClientHydration(withEventReplay()),
+    provideRouter(routes), 
+    provideClientHydration(withEventReplay()),
     provideAnimations(),
     NgxSpinnerModule,
     provideToastr(),

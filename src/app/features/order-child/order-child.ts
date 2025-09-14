@@ -4,6 +4,7 @@ import { OrderService } from '../../core/services/orders/order-service';
 import { CurrencyPipe } from '@angular/common';
 import { TranslateModule, TranslatePipe } from '@ngx-translate/core';
 import { MyTranslateService } from '../../core/services/translateService/my-translate-service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-order-child',
@@ -15,9 +16,10 @@ export class OrderChild {
   constructor(private _OrderService: OrderService,private _MyTranslateService: MyTranslateService) { }
 
   myorders: IOrder[] = []
+    productSubId!: Subscription;
 
   getUserOrders() {
-    this._OrderService.getUserOrders().subscribe({
+    this.productSubId = this._OrderService.getUserOrders().subscribe({
       next: (res) => {
         this.myorders = res
       }
@@ -26,5 +28,9 @@ export class OrderChild {
 
   ngOnInit(): void {
     this.getUserOrders()
+  }
+
+  ngOnDestroy(): void {
+    this.productSubId.unsubscribe()
   }
 }

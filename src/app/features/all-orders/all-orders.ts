@@ -13,13 +13,13 @@ import { Subscription } from 'rxjs';
   styleUrl: './all-orders.scss'
 })
 export class AllOrders {
-  constructor(private _CheckOutService: OrderService, private _MyTranslateService: MyTranslateService) { }
+  constructor(private _OrderService: OrderService, private _MyTranslateService: MyTranslateService) { }
 
   myorders: IOrder[] = []
   productSubId!: Subscription;
 
   getUserOrders() {
-    this.productSubId = this._CheckOutService.getUserOrders().subscribe({
+    this.productSubId = this._OrderService.getUserOrders().subscribe({
       next: (res) => {
         this.myorders = res
       }

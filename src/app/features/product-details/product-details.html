@@ -19,13 +19,15 @@
             <h3 class="text-lg font-semibold mb-2">{{'productDetails.ProductDetail' | translate}}</h3>
             <div class="flex flex-wrap flex-col mb-4">
                 <span class="mb-3">
-                    <i class="fas fa-star"></i> {{'orderChild.Rating' | translate}}: {{productDetails()?.ratingsQuantity}}
+                    <i class="fas fa-star"></i> {{'orderChild.Rating' | translate}}:
+                    {{productDetails()?.ratingsQuantity}}
                 </span>
                 <span class="mb-3">
                     <i class="fas fa-tag"></i> {{'orderChild.Brand' | translate}}: {{productDetails()?.brand?.name}}
                 </span>
                 <span class="mb-3">
-                    <i class="fas fa-layer-group"></i> {{'orderChild.Category' | translate}}: {{productDetails()?.category?.name}}
+                    <i class="fas fa-layer-group"></i> {{'orderChild.Category' | translate}}:
+                    {{productDetails()?.category?.name}}
                 </span>
             </div>
         </div>
@@ -37,11 +39,12 @@
         <div class="flex space-x-4">
             <button (click)="addProduct(productId)"
                 class="flex-1 bg-green-600 hover:bg-green-700 text-white cursor-pointer font-medium py-3 px-6 rounded-lg transition duration-300 text-center">
+                <i class="fas fa-shopping-cart mr-2"></i>
                 {{'productDetails.AddToCart' | translate}}
             </button>
             <button (click)="addProductToWishList(productId)"
                 class="flex items-center justify-center bg-red-600 hover:bg-red-700 text-white cursor-pointer font-medium py-3 px-4 rounded-lg transition duration-300">
-                <i class="fa-solid fa-heart mr-2"></i> 
+                <i class="fa-solid fa-heart mr-2"></i>
                 {{'productDetails.AddToWishList' | translate}}
             </button>
         </div>
