@@ -29,8 +29,6 @@ export class Cart {
   getCart() {
     this.productSubId = this._CartService.getCartProducts().subscribe({
       next: (res) => {
-        console.log(res);
-        
         this.cartId = res.data._id
         this.totalPrice = res.data.totalCartPrice
         this.productList = res.data.products

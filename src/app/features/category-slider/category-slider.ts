@@ -12,6 +12,10 @@ export class CategorySlider {
 
   customOptions: OwlOptions = {
     loop: true,
+    autoplay: true,
+    autoplaySpeed: 200,
+    autoplayTimeout: 100,
+    // autoplayHoverPause: true,
     mouseDrag: true,
     touchDrag: false,
     pullDrag: false,
@@ -20,7 +24,7 @@ export class CategorySlider {
     navText: ['', ''],
     responsive: {
       0: {
-        items: 1
+        items: 2
       },
       400: {
         items: 3

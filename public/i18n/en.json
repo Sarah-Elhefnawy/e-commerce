@@ -50,7 +50,7 @@
     },
     "home": {
         "h2": "Show Popular Categories",
-        "span": "(scroll to view more)"
+        "btn": "Load More"
     },
     "logIn": {
         "h2": "Login Now",

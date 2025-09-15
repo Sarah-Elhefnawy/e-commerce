@@ -11,7 +11,7 @@
         </div>
         @if(checkOutForm.get('details')?.errors && checkOutForm.get('details')?.touched){
         @if(checkOutForm.get('details')?.getError('')){
-        <p class="text-red-700 pb-5">{{'checkout.addressReq' | translate}}</p>
+        <p class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">{{'checkout.addressReq' | translate}}</p>
         }
         }
 
@@ -27,7 +27,7 @@
         <p class="text-red-700 pb-5 pb-6">{{'signUp.phoneReq' | translate}}</p>
         }
         @if(checkOutForm.get('phone')?.getError('pattern')){
-        <p class="text-red-700 pb-5">{{'signUp.phoneVaild' | translate}}</p>
+        <p class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">{{'signUp.phoneVaild' | translate}}</p>
         }
         }
 
@@ -40,7 +40,7 @@
         </div>
         @if(checkOutForm.get('city')?.errors && checkOutForm.get('city')?.touched){
         @if(checkOutForm.get('city')?.getError('')){
-        <p class="text-red-700 pb-5">{{'checkout.cityReq' | translate}}</p>
+        <p class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">{{'checkout.cityReq' | translate}}</p>
         }
         }
 

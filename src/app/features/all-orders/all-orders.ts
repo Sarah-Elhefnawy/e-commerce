@@ -21,6 +21,8 @@ export class AllOrders {
   getUserOrders() {
     this.productSubId = this._OrderService.getUserOrders().subscribe({
       next: (res) => {
+        console.log(res.length);
+        this._OrderService.orderNum.next(res.length)
         this.myorders = res
       }
     })

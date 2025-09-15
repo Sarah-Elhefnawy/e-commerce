@@ -2,7 +2,7 @@
 
     @for (slide of slideData(); track $index) {
     <ng-template carouselSlide [id]="slide._id">
-        <img [src]="slide.image" class="h-[180px]" [alt]="slide.name" [title]="slide.name">
+        <img [src]="slide.image" class="h-[160px]" [alt]="slide.name" [title]="slide.name">
         <h2 class="text-center">{{slide.name}}</h2>
     </ng-template>
     }

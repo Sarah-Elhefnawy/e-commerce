@@ -12,10 +12,10 @@
         </div>
         @if(registerForm.get('email')?.errors && registerForm.get('email')?.touched){
         @if(registerForm.get('email')?.getError('required')){
-        <p class="text-red-700 pb-6">{{'logIn.emailReq' | translate}}</p>
+        <p class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">{{'logIn.emailReq' | translate}}</p>
         }
         @if(registerForm.get('email')?.getError('email')){
-        <p class="text-red-700 pb-6">{{'logIn.emailVaild' | translate}}</p>
+        <p class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">{{'logIn.emailVaild' | translate}}</p>
         }
         }
 
@@ -29,7 +29,7 @@
         </div>
         @if(registerForm.getError('mismatch') && (registerForm.get('rePassword')?.touched ||
         registerForm.get('password')?.touched)){
-        <p class="text-red-700 pb-6">{{'signUp.passwordNoMatch' | translate}}</p>
+        <p class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">{{'signUp.passwordNoMatch' | translate}}</p>
         }
 
         <div class="relative z-0 w-full mb-4 group">
@@ -41,7 +41,7 @@
                 | translate}}</label>
         </div>
         @if(registerForm.getError('mismatch') && registerForm.get('password')?.touched){
-        <p class="text-red-700 pb-6">{{'signUp.passwordNoMatch' | translate}}</p>
+        <p class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">{{'signUp.passwordNoMatch' | translate}}</p>
         }
 
         <div class="relative z-0 w-full mb-4 group">
@@ -54,11 +54,11 @@
         </div>
         @if(registerForm.get('name')?.errors && registerForm.get('name')?.touched){
         @if(registerForm.get('name')?.getError('required')){
-        <p class="text-red-700 pb-6">{{'signUp.nameReq' | translate}}</p>
+        <p class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">{{'signUp.nameReq' | translate}}</p>
         }@else if (registerForm.get('name')?.getError('minlength')) {
-        <p class="text-red-700 pb-6">{{'signUp.nameMin' | translate}}</p>
+        <p class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">{{'signUp.nameMin' | translate}}</p>
         }@else if (registerForm.get('name')?.getError('maxlength')) {
-        <p class="text-red-700 pb-6">{{'signUp.nameMax' | translate}}</p>
+        <p class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">{{'signUp.nameMax' | translate}}</p>
         }
         }
 
@@ -72,10 +72,10 @@
         </div>
         @if(registerForm.get('phone')?.errors && registerForm.get('phone')?.touched){
         @if(registerForm.get('phone')?.getError('required')){
-        <p class="text-red-700 pb-6">{{'signUp.phoneReq' | translate}}</p>
+        <p class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">{{'signUp.phoneReq' | translate}}</p>
         }
         @if(registerForm.get('phone')?.getError('pattern')){
-        <p class="text-red-700">{{'signUp.phoneVaild' | translate}}</p>
+        <p class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50">{{'signUp.phoneVaild' | translate}}</p>
         }
         }
 

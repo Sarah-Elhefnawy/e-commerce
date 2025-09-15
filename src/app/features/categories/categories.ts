@@ -1,10 +1,9 @@
 import { Component, signal, WritableSignal } from '@angular/core';
 import { CategoriesService } from '../../core/services/categories/categories-service';
-import { CategorySlider } from "../category-slider/category-slider";
 
 @Component({
   selector: 'app-categories',
-  imports: [CategorySlider],
+  imports: [],
   templateUrl: './categories.html',
   styleUrl: './categories.scss'
 })

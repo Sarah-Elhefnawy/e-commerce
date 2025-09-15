@@ -1,32 +1,39 @@
-import { isPlatformBrowser } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { inject, Inject, Injectable, PLATFORM_ID } from '@angular/core';
-import { jwtDecode } from 'jwt-decode';
-import { Observable } from 'rxjs';
+import { inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from '../../../../environments/environment.development';
+import { DecodeService } from '../decodeService/decode-service';
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrderService {
   private _HttpClient = inject(HttpClient)
+  private _DecodeService = inject(DecodeService)
+  private _PLATFORM_ID = inject(PLATFORM_ID);
+  orderNum: BehaviorSubject<number> = new BehaviorSubject<number>(0)
 
-  constructor(@Inject(PLATFORM_ID) private id: Object) {
-    if (isPlatformBrowser(id)) {
-      if (localStorage.getItem('token')) {
-        this.decodeUserData()
-      }
+  constructor() {
+    this.initializeCart();
+  }
+
+  initializeCart(): void {
+    if (isPlatformBrowser(this._PLATFORM_ID) && localStorage.getItem('token')) {
+      this.getUserOrders().subscribe({
+        next: (res) => {
+          this.orderNum.next(res.length);
+        },
+        error: (err) => {
+          this.orderNum.next(0);
+        }
+      });
+    } else {
+      this.orderNum.next(0);
     }
   }
 
-  userData!: any
-  decodeUserData() {
-    const token = localStorage.getItem('token')!
-    const decoded = jwtDecode(token)
-    this.userData = decoded
-  }
-
   getUserOrders(): Observable<any> {
-    return this._HttpClient.get(`${environment.baseUrl}/orders/user/${this.userData.id}`)
+    return this._HttpClient.get(`${environment.baseUrl}/orders/user/${this._DecodeService.userData.id}`)
   }
 }

@@ -15,15 +15,20 @@
           @if(isLoggedIn){
           <li>
             <a (click)="signOut()"
-              class="text-gray-900 cursor-pointer font-medium text-sm px-3 py-2 rounded hover:bg-gray-100">{{'navbar.LogOut' | translate}}</a>
+              class="text-gray-900 cursor-pointer font-medium text-sm px-3 py-2 rounded hover:bg-gray-100">{{'navbar.LogOut'
+              | translate}}</a>
           </li>
           }
           @if(!isLoggedIn){
           <li>
-            <a routerLink="/signUp" class="text-gray-900 font-medium text-sm px-3 py-2 rounded hover:bg-gray-100">{{'navbar.SignUp' | translate}}</a>
+            <a routerLink="/signUp"
+              class="text-gray-900 font-medium text-sm px-3 py-2 rounded hover:bg-gray-100">{{'navbar.SignUp' |
+              translate}}</a>
           </li>
           <li>
-            <a routerLink="/logIn" class="text-gray-900 font-medium text-sm px-3 py-2 rounded hover:bg-gray-100">{{'navbar.LogIn' | translate}}</a>
+            <a routerLink="/logIn"
+              class="text-gray-900 font-medium text-sm px-3 py-2 rounded hover:bg-gray-100">{{'navbar.LogIn' |
+              translate}}</a>
           </li>
           }
         </ul>
@@ -79,25 +84,31 @@
         class="flex flex-col items-center p-4 md:p-0 mt-4 font-medium rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0">
         <li>
           <a routerLink="/"
-            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-green-700 md:p-0">{{'navbar.Home' | translate}}</a>
+            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-green-700 md:p-0">{{'navbar.Home'
+            | translate}}</a>
         </li>
         <li>
           <a routerLink="/products"
-            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-green-700 md:p-0">{{'navbar.Products' | translate}}</a>
+            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-green-700 md:p-0">{{'navbar.Products'
+            | translate}}</a>
         </li>
         <li>
           <a routerLink="/categories"
-            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-green-700 md:p-0">{{'navbar.Category' | translate}}</a>
+            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-green-700 md:p-0">{{'navbar.Category'
+            | translate}}</a>
         </li>
         <li>
           <a routerLink="/brands"
-            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-green-700 md:p-0">{{'navbar.Brand' | translate}}</a>
+            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-green-700 md:p-0">{{'navbar.Brand'
+            | translate}}</a>
         </li>
         <li>
-          <a class="block py-2 px-3 cursor-pointer text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-green-700 md:p-0" (click)="_MyTranslateService.changeLang('ar')">{{'navbar.AR' | translate}}</a>
+          <a class="block py-2 px-3 cursor-pointer text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-green-700 md:p-0"
+            (click)="_MyTranslateService.changeLang('ar')">{{'navbar.AR' | translate}}</a>
         </li>
         <li>
-          <a class="block rtl:ms-4 py-2 px-3 cursor-pointer text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-green-700 md:p-0" (click)="_MyTranslateService.changeLang('en')">{{'navbar.EN' | translate}}</a>
+          <a class="block rtl:ms-4 py-2 px-3 cursor-pointer text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-green-700 md:p-0"
+            (click)="_MyTranslateService.changeLang('en')">{{'navbar.EN' | translate}}</a>
         </li>
 
         <!-- Cart icon (only when logged in) -->
@@ -127,6 +138,21 @@
               <div
                 class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -end-2">
                 {{wishListNumber}}
+              </div>
+            </button>
+          </a>
+        </li>
+
+        <li class="flex items-center md:rtl:ms-4">
+          <a routerLink="/allorders"
+            class="block py-2 px-3 text-gray-900 cursor-pointer rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-green-700 md:p-0">
+            <button type="button"
+              class="relative inline-flex items-center cursor-pointer p-3 text-sm font-medium text-center text-white bg-green-700 rounded-lg hover:bg-green-800">
+              <i class="fa-regular fa-credit-card"></i>
+              <span class="sr-only">All Orders</span>
+              <div
+                class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -end-2">
+                {{orderNumber}}
               </div>
             </button>
           </a>
