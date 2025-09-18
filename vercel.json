@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "prerender": {
+    "crawl": true,
+    "ignore": ["/product-details/*", "/checkOut/*"]
+  }
+}
