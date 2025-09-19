@@ -10,7 +10,7 @@ export class CheckOutService {
   private _HttpClient = inject(HttpClient)
 
   CheckOut(shoppingAddress: any, cartId: string | null): Observable<any> {
-    return this._HttpClient.post(`${environment.baseUrl}/orders/checkout-session/${cartId}?url=http://localhost:4200`,
+    return this._HttpClient.post(`${environment.baseUrl}/orders/checkout-session/${cartId}?url=https://e-commerce-two-iota-21.vercel.app`,
       { shippingAddress: shoppingAddress })
   }
 
