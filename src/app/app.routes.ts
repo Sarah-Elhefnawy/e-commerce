@@ -3,14 +3,13 @@ import { authGuard } from './core/guards/auth-guard';
 import { loggedInGuard } from './core/guards/logged-in-guard';
 import { OrderChild } from './features/order-child/order-child';
 import { OrderUserChild } from './features/order-user-child/order-user-child';
-import { RenderMode } from '@angular/ssr';
 
 export const routes: Routes = [
     { path: '', loadComponent: () => import('./features/home/home').then(c => c.Home), title: 'Home' },
     { path: 'products', loadComponent: () => import('./features/products/products').then(c => c.Products), title: 'Products' },
     {
         path: 'product-details/:id',
-        data: { renderMode: RenderMode.Server },
+        data: { prerender: false },
         loadComponent: () => import('./features/product-details/product-details').then(c => c.ProductDetails),
         title: 'Product Details'
     },
@@ -25,7 +24,7 @@ export const routes: Routes = [
     },
     {
         path: 'checkOut/:id',
-        data: { renderMode: RenderMode.Server },
+        data: { prerender: false },
         loadComponent: () => import('./features/check-out/check-out').then(c => c.CheckOut),
         title: 'Payment',
         canActivate: [authGuard]
